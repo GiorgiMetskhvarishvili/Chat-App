@@ -13,8 +13,8 @@ class SwitchButtonView: UIView {
 
   private lazy var button: UIButton = {
     let button = UIButton(type: .custom)
-    button.setImage(UIImage(named: "switch-off"), for: .normal)
-    button.setImage(UIImage(named: "switch-on"), for: .selected)
+    button.setImage(AppImages.switchOffImage, for: .normal)
+    button.setImage(AppImages.switchOnImage, for: .selected)
     button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     addSubview(button)
@@ -27,10 +27,9 @@ class SwitchButtonView: UIView {
     if button.isSelected {
       if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
          let rootViewController = windowScene.windows.first?.rootViewController {
-        rootViewController.view.backgroundColor = UIColor(red: 22/255, green: 0, blue: 57/255, alpha: 1)
+        rootViewController.view.backgroundColor = AppColors.darkModeColor
       }
     } else {
-      UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
       if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
          let rootViewController = windowScene.windows.first?.rootViewController {
         rootViewController.view.backgroundColor = .white
@@ -49,8 +48,8 @@ class SwitchButtonView: UIView {
     super.layoutSubviews()
 
     NSLayoutConstraint.activate([
-      button.widthAnchor.constraint(equalToConstant: 54),
-      button.heightAnchor.constraint(equalToConstant: 27)
+      button.widthAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonWidth),
+      button.heightAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonHeight)
     ])
   }
 }

@@ -10,10 +10,10 @@ import UIKit
 class ViewController: UIViewController {
 
   // MARK: Properties
-  private let topMessageHistoryView = MessageHistoryView()
-  private let dividerView = DividerView()
-  private let bottomChatHistoryView = MessageHistoryView()
-  private let switchButtonView = SwitchButtonView()
+  private lazy var topMessageHistoryView = MessageHistoryView()
+  private lazy var dividerView = UIView()
+  private lazy var bottomChatHistoryView = MessageHistoryView()
+  private lazy var  switchButtonView = SwitchButtonView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,6 +23,8 @@ class ViewController: UIViewController {
      switchButtonView,
      bottomChatHistoryView,].forEach(view.addSubview)
      setUpLayoutConstraints()
+
+    dividerView.backgroundColor = AppColors.dividerViewColor
   }
 
   // MARK: Layout constraint
@@ -38,19 +40,21 @@ class ViewController: UIViewController {
       topMessageHistoryView.bottomAnchor.constraint(equalTo: dividerView.topAnchor, constant: -30),
       topMessageHistoryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
-      dividerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      dividerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      dividerView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+      dividerView.topAnchor.constraint(equalTo: topMessageHistoryView.bottomAnchor),
+      dividerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      dividerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      dividerView.heightAnchor.constraint(equalToConstant: DividerViewConstants.dividerHeightConstans),
+      dividerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
       bottomChatHistoryView.topAnchor.constraint(equalTo: dividerView.bottomAnchor),
       bottomChatHistoryView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       bottomChatHistoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       bottomChatHistoryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
-      switchButtonView.topAnchor.constraint(equalTo: topMessageHistoryView.topAnchor, constant: 0),
-      switchButtonView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-      switchButtonView.widthAnchor.constraint(equalToConstant: 54),
-      switchButtonView.heightAnchor.constraint(equalToConstant: 27),
+      switchButtonView.topAnchor.constraint(equalTo: topMessageHistoryView.topAnchor, constant: SwitchButtonViewConstants.switcherTopPadding),
+      switchButtonView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: SwitchButtonViewConstants.trailingAnchor),
+      switchButtonView.widthAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonWidth),
+      switchButtonView.heightAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonHeight),
     ])
   }
 }

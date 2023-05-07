@@ -31,7 +31,7 @@ final class MessageTableViewCell: UITableViewCell {
     containerView.backgroundColor = .clear
 
     messageLabel.numberOfLines = 0
-    messageLabel.font = UIFont.systemFont(ofSize: 16)
+    messageLabel.font = UIFont.systemFont(ofSize: ContainerViewConstants.textViewFontSize)
     messageLabel.textColor = .black
     messageLabel.text = "როგორ ხარ"
 

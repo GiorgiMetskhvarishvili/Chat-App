@@ -10,11 +10,12 @@ import UIKit
 class MessageHistoryView : UIView {
 
   // MARK: Properties
-  private lazy var data = ["როგორ ხარ?", "კარგად",""]
+  private var data = ["როგორ ხარ?", "კარგად",""]
+  private let placeHolder = "დაწერე შეტყობინება ..."
   private lazy var messageHistoryView = UIView()
-  private lazy var messageCell = MessageTableViewCell()
   private lazy var chatBubble = BubbleView()
-  private lazy var typingMessageView = TypingComponentView(typingComponentModel: TypingComponentModel(placeHolder:"დაწერე შეტყობინება...", sendButtonImageName: "SendButton"))
+  let typingMessageView: TypingComponentView
+
   private lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,11 +29,13 @@ class MessageHistoryView : UIView {
   // MARK: Init
 
   override init(frame: CGRect) {
+    typingMessageView = TypingComponentView(placeHolder: placeHolder, sendButtonImageName: "SendButton")
     super.init(frame: frame)
     setUp()
   }
 
   required init?(coder: NSCoder) {
+    typingMessageView = TypingComponentView(placeHolder: placeHolder, sendButtonImageName: "SendButton")
     super.init(coder: coder)
     setUp()
   }
@@ -83,19 +86,21 @@ class MessageHistoryView : UIView {
     ])
   }
 }
-
+//დელეგატი წავშალო
 extension MessageHistoryView: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data.count
+    data.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
     cell.backgroundColor = .clear
+    cell.messageLabel.text = data[indexPath.row]
     return cell
   }
 
+  //არ მჭირდება
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("Selected item \(indexPath.row + 1)")
   }

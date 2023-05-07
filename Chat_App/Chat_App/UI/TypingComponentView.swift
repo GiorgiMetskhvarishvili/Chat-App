@@ -14,21 +14,21 @@ class TypingComponentView: UIView {
   private lazy var containerView = UIView()
   private lazy var textView = UITextView()
   private lazy var button = UIButton()
-  private var typingComponentModel: TypingComponentModel?
+  private let placeHolder: String
+  private let sendButtonImageName: String
 
   // MARK: - Initializers
 
-  init(typingComponentModel: TypingComponentModel) {
-    self.typingComponentModel = typingComponentModel
+  init(placeHolder: String, sendButtonImageName: String) {
+    self.placeHolder = placeHolder
+    self.sendButtonImageName = sendButtonImageName
     super.init(frame: .zero)
     setUpViews()
     setUpLayoutConstraints()
   }
 
   required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    setUpViews()
-    setUpLayoutConstraints()
+    fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Setups
@@ -40,26 +40,25 @@ class TypingComponentView: UIView {
   }
 
   private func setUpContainerView() {
-    containerView.layer.borderWidth = 1.0
-    containerView.layer.borderColor = UIColor(red: 0.62, green: 0.38, blue: 1.00, alpha: 1.00).cgColor
-    containerView.layer.cornerRadius = 28
+    containerView.layer.borderWidth = ContainerViewConstants.containerBorderWidth
+    containerView.layer.borderColor = AppColors.containerBorderColor.cgColor
+    containerView.layer.cornerRadius = ContainerViewConstants.containerCornerRadius
     containerView.translatesAutoresizingMaskIntoConstraints = false
   }
 
   private func setUpTextView() {
-    textView.text = typingComponentModel?.placeHolder
+    textView.text = placeHolder
     textView.translatesAutoresizingMaskIntoConstraints = false
     textView.isScrollEnabled = true
-    //  textView.textContainer.lineBreakMode = .byWordWrapping
     textView.textColor = .lightGray
-    textView.font = UIFont.systemFont(ofSize: 16)
+    textView.font = .systemFont(ofSize: ContainerViewConstants.textViewFontSize)
     textView.delegate = self
     textView.backgroundColor = UIColor.clear
     containerView.addSubview(textView)
   }
 
   private func setUpButton() {
-    button.setImage(UIImage(named: typingComponentModel!.sendButtonImageName), for: .normal)
+    button.setImage(UIImage(named: sendButtonImageName), for: .normal)
     button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(button)
@@ -83,28 +82,29 @@ class TypingComponentView: UIView {
     textView.text = ""
   }
 
+
   // MARK: - Layout Constraints
 
   private func setUpLayoutConstraints() {
     addSubview(containerView)
     NSLayoutConstraint.activate([
       containerView.topAnchor.constraint(equalTo: topAnchor),
-      containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ContainerViewConstants.containerLeadingPadding),
       containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: ContainerViewConstants.containerTrailingPadding),
 
-      textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-      textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
-      textView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-      textView.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -5),
-      textView.heightAnchor.constraint(greaterThanOrEqualToConstant: textView.font!.lineHeight * 5),
+      textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: ContainerViewConstants.textViewtopLeadingPadding),
+      textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: ContainerViewConstants.textViewbottomPadding),
+      textView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ContainerViewConstants.textViewtopLeadingPadding),
+      textView.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: ContainerViewConstants.textViewtrailingPadding),
+      //textView.heightAnchor.constraint(greaterThanOrEqualToConstant: textView.font!.lineHeight * 5),
 
-      // button.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
-      button.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12),
-      button.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12),
+
+      button.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: ContainerViewConstants.sendButtonBottomPadding),
+      button.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: ContainerViewConstants.containerTrailingPadding),
       button.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-      button.heightAnchor.constraint(equalToConstant: 32),
-      button.widthAnchor.constraint(equalToConstant: 32),
+      button.heightAnchor.constraint(equalToConstant: ContainerViewConstants.sendButtonWidthAndHeight),
+      button.widthAnchor.constraint(equalToConstant: ContainerViewConstants.sendButtonWidthAndHeight),
     ])
   }
 }
@@ -119,15 +119,15 @@ extension TypingComponentView: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.textColor == .lightGray {
-      textView.text = nil
+      textView.text = nil //EmptyString
       textView.textColor = .black
     }
   }
 
   func textViewDidEndEditing(_ textView: UITextView) {
-    if textView.text.isEmpty {
-      textView.text = typingComponentModel?.placeHolder
-      textView.textColor = .lightGray
-    }
+      if textView.text.isEmpty {
+          textView.text = placeHolder
+          textView.textColor = .lightGray
+      }
   }
 }
