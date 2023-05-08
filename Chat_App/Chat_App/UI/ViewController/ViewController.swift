@@ -4,7 +4,6 @@
 //
 //  Created by Gi Oo on 24.04.23.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -13,10 +12,11 @@ class ViewController: UIViewController {
   private lazy var topMessageHistoryView = MessageHistoryView()
   private lazy var dividerView = UIView()
   private lazy var bottomChatHistoryView = MessageHistoryView()
-  private lazy var  switchButtonView = SwitchButtonView()
+  private lazy var switchButtonView = SwitchButtonView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
 
     [topMessageHistoryView,
      dividerView,
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 
     dividerView.backgroundColor = AppColors.dividerViewColor
   }
+
 
   // MARK: Layout constraint
   private func setUpLayoutConstraints() {
@@ -58,5 +59,4 @@ class ViewController: UIViewController {
     ])
   }
 }
-
 

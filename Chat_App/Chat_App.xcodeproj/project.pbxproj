@@ -21,8 +21,7 @@
 		389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA229F663BA00327D2B /* Assets.xcassets */; };
 		389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */; };
 		38BE93702A07CCB100B6ADC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* Constants.swift */; };
-		38C445F62A07E62100DBB233 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C445F52A07E62100DBB233 /* AppColors.swift */; };
-		38C445F82A07E7E700DBB233 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C445F72A07E7E700DBB233 /* AppImages.swift */; };
+		38C445FA2A08E2CA00DBB233 /* switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C445F92A08E2CA00DBB233 /* switcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +41,7 @@
 		389F2FA529F663BA00327D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		389F2FA729F663BA00327D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38BE936F2A07CCB100B6ADC7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		38C445F52A07E62100DBB233 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		38C445F72A07E7E700DBB233 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		38C445F92A08E2CA00DBB233 /* switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +88,7 @@
 		389F2F8A29F663B900327D2B = {
 			isa = PBXGroup;
 			children = (
+				38C445F92A08E2CA00DBB233 /* switcher.swift */,
 				389F2F9529F663BA00327D2B /* Chat_App */,
 				389F2F9429F663BA00327D2B /* Products */,
 			);
@@ -123,8 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				38BE936F2A07CCB100B6ADC7 /* Constants.swift */,
-				38C445F52A07E62100DBB233 /* AppColors.swift */,
-				38C445F72A07E7E700DBB233 /* AppImages.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -209,10 +206,9 @@
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
-				38C445F62A07E62100DBB233 /* AppColors.swift in Sources */,
 				389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */,
+				38C445FA2A08E2CA00DBB233 /* switcher.swift in Sources */,
 				38BE93702A07CCB100B6ADC7 /* Constants.swift in Sources */,
-				38C445F82A07E7E700DBB233 /* AppImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

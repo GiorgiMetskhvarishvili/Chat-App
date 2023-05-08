@@ -119,7 +119,7 @@ extension TypingComponentView: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.textColor == .lightGray {
-      textView.text = nil //EmptyString
+      textView.text = nil
       textView.textColor = .black
     }
   }

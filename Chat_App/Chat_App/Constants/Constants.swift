@@ -42,3 +42,28 @@ enum ContainerViewConstants {
 enum MessageTableViewCellcConstants {
   
 }
+
+
+enum AppColors {
+    static let dividerViewColor = UIColor(red: 0.97,
+                                          green: 0.81,
+                                          blue: 0.50,
+                                          alpha: 1.0)
+
+    static let darkModeColor = UIColor(red: 22/255,
+                                       green: 0,
+                                       blue: 57/255,
+                                       alpha: 1)
+
+    static let containerBorderColor = UIColor(red: 0.62,
+                                             green: 0.38,
+                                             blue: 1.00,
+                                             alpha: 1.00)
+}
+
+
+enum AppImages {
+    static let switchOffImage = UIImage(named: "switch-off")
+    static let switchOnImage =  UIImage(named: "dark_Mode")
+    static let sendButtonImmage = UIImage(named: "SendButton")
+}

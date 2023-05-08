@@ -7,8 +7,8 @@
 
 import UIKit
 
-enum AppImages {
-    static let switchOffImage = UIImage(named: "switch-off")
-    static let switchOnImage =  UIImage(named: "dark_Mode")
-    static let sendButtonImmage = UIImage(named: "SendButton")
-}
+//enum AppImages {
+//    static let switchOffImage = UIImage(named: "switch-off")
+//    static let switchOnImage =  UIImage(named: "dark_Mode")
+//    static let sendButtonImmage = UIImage(named: "SendButton")
+//}
