@@ -11,6 +11,8 @@ class SwitchButtonView: UIView {
 
   // MARK: - Properties
 
+  private var onToggle: ((Bool) -> Void)?
+
   private lazy var button: UIButton = {
     let button = UIButton(type: .custom)
     button.setImage(AppImages.switchOffImage, for: .normal)
@@ -20,27 +22,6 @@ class SwitchButtonView: UIView {
     addSubview(button)
     return button
   }()
-
-  // MARK: - Actions
-
-  func updateBackgroundColor() {
-    if button.isSelected {
-      if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-         let rootViewController = windowScene.windows.first?.rootViewController {
-        rootViewController.view.backgroundColor = AppColors.darkModeColor
-      }
-    } else {
-      if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-         let rootViewController = windowScene.windows.first?.rootViewController {
-        rootViewController.view.backgroundColor = .white
-      }
-    }
-  }
-
-  @objc func buttonTapped(_ sender: UIButton) {
-    sender.isSelected = !sender.isSelected
-    updateBackgroundColor()
-  }
 
   // MARK: - Layout
 
@@ -52,5 +33,35 @@ class SwitchButtonView: UIView {
       button.heightAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonHeight)
     ])
   }
+
+  // MARK: - Actions
+
+  @objc func buttonTapped(_ sender: UIButton) {
+    sender.isSelected.toggle()
+    updateBackgroundColor()
+    onToggle?(sender.isSelected)
+  }
+
+  // MARK: - Helpers
+  
+  private func updateBackgroundColor() {
+    if button.isSelected {
+      backgroundColor = AppColors.darkModeColor
+    } else {
+      backgroundColor = .white
+    }
+  }
+
+  func setOnToggle(_ closure: ((Bool) -> Void)?) {
+    self.onToggle = closure
+  }
 }
 
+//MARK: Extension
+
+extension SwitchButtonView {
+  enum AppImages {
+    static let switchOffImage = UIImage(named: "switch-off")
+    static let switchOnImage =  UIImage(named: "switch-on")
+  }
+}

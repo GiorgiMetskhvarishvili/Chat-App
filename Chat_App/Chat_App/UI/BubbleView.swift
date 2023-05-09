@@ -9,7 +9,7 @@ import UIKit
 
 class BubbleView: UIView {
 
-  var senderBubbleColor = UIColor(red: 218, green: 195, blue: 255, alpha: 1)
+  let senderBubbleColor = UIColor(red: 218, green: 195, blue: 255, alpha: 1)
 
   private var radius: CGFloat {
     Constants.radius

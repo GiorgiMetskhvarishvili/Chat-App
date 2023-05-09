@@ -16,17 +16,27 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
 
-    [topMessageHistoryView,
-     dividerView,
-     switchButtonView,
-     bottomChatHistoryView,].forEach(view.addSubview)
-     setUpLayoutConstraints()
-
+    addSubviews()
+    setUpLayoutConstraints()
     dividerView.backgroundColor = AppColors.dividerViewColor
+
+    switchButtonView.setOnToggle { [weak self] isOn in
+      if isOn {
+        self?.view.backgroundColor = AppColors.darkModeColor
+      } else {
+        self?.view.backgroundColor = .white
+      }
+    }
   }
 
+  //MARK: Add Subviews
+  private func addSubviews() {
+    [topMessageHistoryView, dividerView, switchButtonView, bottomChatHistoryView].forEach {
+      $0.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview($0)
+    }
+  }
 
   // MARK: Layout constraint
   private func setUpLayoutConstraints() {
@@ -46,7 +56,7 @@ class ViewController: UIViewController {
       dividerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       dividerView.heightAnchor.constraint(equalToConstant: DividerViewConstants.dividerHeightConstans),
       dividerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
+      
       bottomChatHistoryView.topAnchor.constraint(equalTo: dividerView.bottomAnchor),
       bottomChatHistoryView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       bottomChatHistoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -59,4 +69,5 @@ class ViewController: UIViewController {
     ])
   }
 }
+
 

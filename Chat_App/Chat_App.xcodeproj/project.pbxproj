@@ -12,7 +12,6 @@
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
 		385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018802A03E58500494D1A /* MessageTableViewCell.swift */; };
 		385018832A03E58F00494D1A /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018822A03E58F00494D1A /* BubbleView.swift */; };
-		385018862A03E5B600494D1A /* TypingComponentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018852A03E5B500494D1A /* TypingComponentModel.swift */; };
 		389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9629F663BA00327D2B /* AppDelegate.swift */; };
 		389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9829F663BA00327D2B /* SceneDelegate.swift */; };
 		389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9A29F663BA00327D2B /* ViewController.swift */; };
@@ -30,7 +29,6 @@
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
 		385018802A03E58500494D1A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		385018822A03E58F00494D1A /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
-		385018852A03E5B500494D1A /* TypingComponentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentModel.swift; sourceTree = "<group>"; };
 		389F2F9329F663BA00327D2B /* Chat_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F2F9629F663BA00327D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		389F2F9829F663BA00327D2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,18 +61,9 @@
 				3850187E2A03E57200494D1A /* TypingComponentView.swift */,
 				385018802A03E58500494D1A /* MessageTableViewCell.swift */,
 				385018822A03E58F00494D1A /* BubbleView.swift */,
-				385018842A03E59800494D1A /* Model */,
 				385018882A03E65E00494D1A /* ViewController */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		385018842A03E59800494D1A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				385018852A03E5B500494D1A /* TypingComponentModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		385018882A03E65E00494D1A /* ViewController */ = {
@@ -202,7 +191,6 @@
 				385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */,
 				389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */,
 				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
-				385018862A03E5B600494D1A /* TypingComponentModel.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
