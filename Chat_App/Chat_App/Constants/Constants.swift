@@ -26,7 +26,6 @@ enum DividerViewConstants {
   static let dividerHeightConstans: CGFloat = 6
 }
 
-
 enum AppColors {
   static let dividerViewColor = UIColor(red: 0.97,
                                         green: 0.81,
