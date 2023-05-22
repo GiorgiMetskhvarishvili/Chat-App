@@ -44,7 +44,6 @@ class TypingComponentView: UIView {
     }()
 
     // MARK: - Initializers
-
     init() {
         super.init(frame: .zero)
         updateTextViewHeight()
@@ -57,7 +56,6 @@ class TypingComponentView: UIView {
     }
 
     // MARK: - Setups
-
     private func setUpSubviews() {
         addSubview(containerView)
         containerView.addSubview(button)
@@ -72,7 +70,6 @@ class TypingComponentView: UIView {
 
 
     // MARK: - Layout Constraints
-
     private func setUpLayoutConstraints() {
         setUpContainerViewLayoutConstraints()
         setUpTextViewLayoutConstraints()
@@ -108,10 +105,9 @@ class TypingComponentView: UIView {
     }
 
     // MARK: Actions
-
     private func calculateMaxLines() -> Int {
         let maxSize = CGSize(width: textView.frame.width, height: CGFloat(Float.infinity))
-        let font = textView.font ?? .systemFont(ofSize: 16)
+        let font = textView.font ?? .systemFont(ofSize: Constants.textViewFontSize)
         let charSize = font.lineHeight
         let text = (textView.text ?? "") as NSString
         let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
@@ -120,7 +116,7 @@ class TypingComponentView: UIView {
     }
 
     private func updateTextViewHeight() {
-        if calculateMaxLines() > 5 {
+        if calculateMaxLines() > Constants.maxLineNubmer {
             if heightConstraint != nil { return }
             heightConstraint = containerView.heightAnchor.constraint(equalToConstant: containerView.frame.height)
             heightConstraint?.isActive = true
@@ -145,7 +141,6 @@ class TypingComponentView: UIView {
 }
 
 // MARK: - UITextViewDelegate
-
 extension TypingComponentView: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
@@ -154,7 +149,7 @@ extension TypingComponentView: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .lightGray {
-            textView.text = nil
+            textView.text = ""
             textView.textColor = .black
         }
     }
@@ -185,8 +180,10 @@ private extension TypingComponentView {
         static let textViewbottomPadding: CGFloat = -10
         static let textViewtrailingPadding: CGFloat = -5
         static let textViewFontSize: CGFloat = 16
-        static var placeholderText: String = "დაწერე შეტყობინება..."
-        static var sendButtonImageName: String = "SendButton"
+        static let placeholderText: String = "დაწერე შეტყობინება..."
+        static let sendButtonImageName: String = "SendButton"
+
+        static let maxLineNubmer: Int = 5
     }
 }
 

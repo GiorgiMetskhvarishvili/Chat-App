@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380CC0502A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC04F2A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift */; };
+		380CC0522A1B79C50092EEB0 /* DividerViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */; };
+		380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC0532A1B7A050092EEB0 /* AppColor.swift */; };
 		385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018772A03E53900494D1A /* SwitchButtonView.swift */; };
 		3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187C2A03E55D00494D1A /* MessageHistoryView.swift */; };
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
@@ -18,10 +21,13 @@
 		389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */; };
 		389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA229F663BA00327D2B /* Assets.xcassets */; };
 		389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */; };
-		38BE93702A07CCB100B6ADC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* Constants.swift */; };
+		38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380CC04F2A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMessageHistoryViewConstants.swift; sourceTree = "<group>"; };
+		380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViewConstants.swift; sourceTree = "<group>"; };
+		380CC0532A1B7A050092EEB0 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		385018772A03E53900494D1A /* SwitchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonView.swift; sourceTree = "<group>"; };
 		3850187C2A03E55D00494D1A /* MessageHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryView.swift; sourceTree = "<group>"; };
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
@@ -35,7 +41,7 @@
 		389F2FA229F663BA00327D2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		389F2FA529F663BA00327D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		389F2FA729F663BA00327D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38BE936F2A07CCB100B6ADC7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,10 @@
 		38BE936E2A07CC8400B6ADC7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				38BE936F2A07CCB100B6ADC7 /* Constants.swift */,
+				38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */,
+				380CC04F2A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift */,
+				380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */,
+				380CC0532A1B7A050092EEB0 /* AppColor.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -180,15 +189,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380CC0522A1B79C50092EEB0 /* DividerViewConstants.swift in Sources */,
 				3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */,
 				385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */,
 				389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */,
 				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
+				380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
+				380CC0502A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift in Sources */,
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
 				389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */,
-				38BE93702A07CCB100B6ADC7 /* Constants.swift in Sources */,
+				38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

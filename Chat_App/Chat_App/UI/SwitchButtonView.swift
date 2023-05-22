@@ -10,7 +10,6 @@ import UIKit
 class SwitchButtonView: UIView {
 
     // MARK: Components
-
     var onToggle: ((Bool) -> Void)?
 
     private lazy var button: UIButton = {
@@ -25,7 +24,6 @@ class SwitchButtonView: UIView {
     }()
 
     // MARK: LifeCycle
-
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -36,7 +34,6 @@ class SwitchButtonView: UIView {
     }
 
     // MARK: Actions
-
     @objc func buttonTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
         updateBackgroundColor()
@@ -44,19 +41,11 @@ class SwitchButtonView: UIView {
     }
 
     // MARK: Methods
-
     private func updateBackgroundColor() {
         backgroundColor = button.isSelected ? AppColors.darkModeColor : .white
     }
 }
 
-//MARK: Constants
 
-private extension SwitchButtonView {
-    enum SwitchButtonImages {
-        static let switchOffImage = UIImage(named: "switch-off")
-        static let switchOnImage =  UIImage(named: "switch-on")
-    }
-}
 
 

@@ -57,19 +57,31 @@ final class MessageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: String) {
-        messageLabel.text = item
+    func configure(with item: String, indexPath: IndexPath) {
+         messageLabel.text = item
+
+         if indexPath.row == 0 {
+             setUpLeftBubbleLayoutConstraints()
+         } else if indexPath.row == 1 {
+             setUpRightBubbleLayoutConstraints()
+             setUpSecondBubbleColor()
+         }else if indexPath.row == 2 {
+             setUpLeftBubbleLayoutConstraints()
+         }
     }
 
+    func setUpSecondBubbleColor() {
+        chatBubble.backgroundColor = chatBubbleConstraints2.backgroundColor
+        middleBubble.backgroundColor = middleBubblConstaints2.backgroundColor
+        smallBubble.backgroundColor = smallBubbleConstraints2.backgroundColor
+    }
     // MARK: Setup
-
     private func setupViews() {
         selectionStyle = .none
         backgroundColor = .clear
         setUpBubbles()
         setUpMessageLabel()
         setUpDateLabel()
-        setUpLayoutConstraints()
     }
 
     private func setUpBubbles() {
@@ -96,16 +108,67 @@ final class MessageTableViewCell: UITableViewCell {
     }
 
     // MARK: - Layout Constraints
-
-    private func setUpLayoutConstraints() {
-        setUpSmallBubbleConstraints()
-        setUpMiddleBubbleConstraints()
-        setUpChatBubbleConstraints()
-        setUpMessageLabelConstraints()
-        setUpDateLabelConstraints()
+    private func setUpRightBubbleLayoutConstraints() {
+        setUpRightSmallBubbleConstraints()
+        setUpRightMiddleBubbleConstraints()
+        setUpRightChatBubbleConstraints()
+        setUpRightMessageLabelConstraints()
+        setUpRightDateLabelConstraints()
     }
 
-    private func setUpSmallBubbleConstraints() {
+    private func setUpRightSmallBubbleConstraints() {
+        NSLayoutConstraint.activate([
+            smallBubble.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: smallBubbleConstraints2.trailing),
+            smallBubble.topAnchor.constraint(equalTo: middleBubble.bottomAnchor, constant: smallBubbleConstraints2.topAnchor),
+            smallBubble.widthAnchor.constraint(equalToConstant: smallBubbleConstraints2.widthHeight),
+            smallBubble.heightAnchor.constraint(equalToConstant: smallBubbleConstraints2.widthHeight)
+        ])
+    }
+
+    private func setUpRightMiddleBubbleConstraints() {
+        NSLayoutConstraint.activate([
+            middleBubble.trailingAnchor.constraint(equalTo: chatBubble.trailingAnchor, constant: middleBubblConstaints2.trailing),
+            middleBubble.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: middleBubblConstaints2.bottom),
+            middleBubble.widthAnchor.constraint(equalToConstant: middleBubblConstaints2.width),
+            middleBubble.heightAnchor.constraint(equalToConstant: middleBubblConstaints2.height),
+        ])
+    }
+
+    private func setUpRightChatBubbleConstraints() {
+        NSLayoutConstraint.activate([
+            chatBubble.topAnchor.constraint(equalTo: contentView.topAnchor, constant: chatBubbleConstraints2.top),
+            chatBubble.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: chatBubbleConstraints2.trailing),
+            chatBubble.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: chatBubbleConstraints2.bottom),
+        ])
+    }
+
+    private func setUpRightMessageLabelConstraints() {
+        NSLayoutConstraint.activate([
+            messageLabel.topAnchor.constraint(equalTo: chatBubble.topAnchor, constant: messageLabelConstrains2.top),
+            messageLabel.trailingAnchor.constraint(equalTo: chatBubble.trailingAnchor, constant: messageLabelConstrains2.trailing),
+            messageLabel.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: messageLabelConstrains2.bottom),
+            messageLabel.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: messageLabelConstrains2.leading)
+        ])
+        messageLabel.textAlignment = .right
+    }
+
+    private func setUpRightDateLabelConstraints() {
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: dateLabelConstraints2.top),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: dateLabelConstraints2.trailing),
+            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: dateLabelConstraints2.bottom),
+        ])
+    }
+
+    private func setUpLeftBubbleLayoutConstraints() {
+        setUpLeftSmallBubbleConstraints()
+        setUpLeftMiddleBubbleConstraints()
+        setUpLeftChatBubbleConstraints()
+        setUpLeftMessageLabelConstraints()
+        setUpLeftDateLabelConstraints()
+    }
+
+    private func setUpLeftSmallBubbleConstraints() {
         NSLayoutConstraint.activate([
             smallBubble.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: SmallBubbleConstants.leadingAnchor),
             smallBubble.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: SmallBubbleConstants.bottomAnchor),
@@ -114,7 +177,7 @@ final class MessageTableViewCell: UITableViewCell {
         ])
     }
 
-    private func setUpMiddleBubbleConstraints() {
+    private func setUpLeftMiddleBubbleConstraints() {
         NSLayoutConstraint.activate([
             middleBubble.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: MiddleBubbleConstants.leadingAnchor),
             middleBubble.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: MiddleBubbleConstants.bottomAnchor),
@@ -123,14 +186,14 @@ final class MessageTableViewCell: UITableViewCell {
         ])
     }
 
-    private func setUpChatBubbleConstraints() {
+    private func setUpLeftChatBubbleConstraints() {
         NSLayoutConstraint.activate([
             chatBubble.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ChatBubbleConstants.topAnchor),
             chatBubble.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ChatBubbleConstants.leadingAnchor),
         ])
     }
 
-    private func setUpMessageLabelConstraints() {
+    private func setUpLeftMessageLabelConstraints() {
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: chatBubble.topAnchor, constant: MessageLabelConstants.topAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: MessageLabelConstants.leadingAnchor),
@@ -139,7 +202,7 @@ final class MessageTableViewCell: UITableViewCell {
         ])
     }
 
-    private func setUpDateLabelConstraints() {
+    private func setUpLeftDateLabelConstraints() {
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: DateLabelConstants.topAnchor),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DateLabelConstants.leadingAnchor),
@@ -173,7 +236,7 @@ private extension MessageTableViewCell {
     enum MiddleBubbleConstants {
         static let leadingAnchor: CGFloat = -4
         static let bottomAnchor: CGFloat = 2
-        static let widthHeightAnchor: CGFloat = 24
+        static let widthHeightAnchor: CGFloat = 22
         static let cornerRadius: CGFloat = 12
         static let backgroundColor = UIColor(red: 241/255,
                                              green: 241/255,
@@ -184,8 +247,8 @@ private extension MessageTableViewCell {
     enum SmallBubbleConstants {
         static let leadingAnchor: CGFloat = 10
         static let bottomAnchor: CGFloat = -20
-        static let widthHeightAnchor: CGFloat = 18
-        static let cornerRadius: CGFloat = 10
+        static let widthHeightAnchor: CGFloat = 15
+        static let cornerRadius: CGFloat = 8
         static let backgroundColor = UIColor(red: 241/255,
                                              green: 241/255,
                                              blue: 241/255,
@@ -199,5 +262,50 @@ private extension MessageTableViewCell {
         static let fontSize: CGFloat = 12
         static let labelText = "18:25"
         static let dateLabelFontSize = UIFont.systemFont(ofSize: 12)
+    }
+
+//MARK: SenderBubbleConstraints
+    enum smallBubbleConstraints2 {
+        static let topAnchor: CGFloat = -5
+        static let trailing: CGFloat = -10
+        static let widthHeight: CGFloat = 15
+        static let backgroundColor = UIColor(red: 218/255,
+                                             green: 194/255,
+                                             blue: 255/255,
+                                             alpha: 1)
+    }
+
+    enum middleBubblConstaints2 {
+        static let trailing: CGFloat = 4
+        static let bottom: CGFloat = 4
+        static let width: CGFloat = 22
+        static let height: CGFloat = 22
+        static let backgroundColor = UIColor(red: 218/255,
+                                             green: 194/255,
+                                             blue: 255/255,
+                                             alpha: 1)
+    }
+    enum chatBubbleConstraints2 {
+        static let top: CGFloat = 5
+        static let trailing: CGFloat = -30
+        static let bottom: CGFloat = 16
+        static let backgroundColor = UIColor(red: 218/255,
+                                             green: 194/255,
+                                             blue: 255/255,
+                                             alpha: 1)
+    }
+
+    enum messageLabelConstrains2 {
+        static let top: CGFloat = 16
+        static let bottom: CGFloat = 16
+        static let leading: CGFloat = 16
+        static let trailing: CGFloat = -16
+
+    }
+
+    enum dateLabelConstraints2 {
+        static let top: CGFloat = 5
+        static let trailing: CGFloat = -55
+        static let bottom: CGFloat = -16
     }
 }

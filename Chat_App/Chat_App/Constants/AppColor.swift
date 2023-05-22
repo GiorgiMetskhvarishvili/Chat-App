@@ -1,30 +1,11 @@
 //
-//  Constants.swift
+//  AppColor.swift
 //  Chat_App
 //
-//  Created by Gi Oo on 05.05.23.
+//  Created by Gi Oo on 22.05.23.
 //
 
 import UIKit
-
-// MARK: SwitchButtonViewConstants Extension
-enum SwitchButtonViewConstants {
-  static let switchButtonWidth: CGFloat = 54
-  static let switchButtonHeight: CGFloat = 27
-  static let switcherTopPadding: CGFloat = 0
-  static let trailingAnchor: CGFloat = -12
-}
-
-//MARK: topMessageHistoryView Extension
-enum TopMessageHistoryViewConstants {
-  static let topAnchor: CGFloat = 15
-  static let bottomAnchor: CGFloat = -30
-}
-
-// MARK: DividerViewConstants Extension
-enum DividerViewConstants {
-  static let dividerHeightConstans: CGFloat = 6
-}
 
 enum AppColors {
   static let dividerViewColor = UIColor(red: 0.97,
@@ -46,4 +27,3 @@ enum AppColors {
                                    green: 241,
                                    blue: 241, alpha: 1)
 }
-

@@ -8,50 +8,60 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: Properties
     private lazy var topMessageHistoryView = MessageHistoryView()
-    private lazy var dividerView = UIView()
     private lazy var bottomChatHistoryView = MessageHistoryView()
     private lazy var switchButtonView = SwitchButtonView()
     private var statusBarStyle: UIStatusBarStyle = .darkContent
-
+    private lazy var dividerView: UIView = {
+           let view = UIView()
+           view.backgroundColor = AppColors.dividerViewColor
+           return view
+       }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         setUpLayoutConstraints()
-        setUpDividerView()
         setUpSwitchButtonViewToggle()
     }
 
+    // MARK: - PreferredStatusBarStyle
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
-
+    
+    // MARK: - SetUpMessageViewTextColor
     private func setUpMessageViewTextColor(with color: UIColor) {
         topMessageHistoryView.setUpTypingComponentView(with: color)
         bottomChatHistoryView.setUpTypingComponentView(with: color)
     }
 
-    private func setUpDividerView() {
-        dividerView.backgroundColor = AppColors.dividerViewColor
-    }
-
+    // MARK: - SetUpSwitchButtonViewToggle
     private func setUpSwitchButtonViewToggle() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "AppTheme")
+        updateAppearance(isDarkMode: isDarkMode)
+
         switchButtonView.onToggle = { [weak self] isOn in
-            if isOn {
-                self?.view.backgroundColor = AppColors.darkModeColor
-                self?.statusBarStyle = .lightContent
-                self?.setUpMessageViewTextColor(with: .white)
-            } else {
-                self?.view.backgroundColor = .white
-                self?.statusBarStyle = .darkContent
-                self?.setUpMessageViewTextColor(with: .black)
-            }
-            self?.setNeedsStatusBarAppearanceUpdate()
+            UserDefaults.standard.set(isOn, forKey: "AppTheme")
+            self?.updateAppearance(isDarkMode: isOn)
         }
     }
 
+    private func updateAppearance(isDarkMode: Bool) {
+        if isDarkMode {
+            view.backgroundColor = AppColors.darkModeColor
+            statusBarStyle = .lightContent
+            setUpMessageViewTextColor(with: .white)
+        } else {
+            view.backgroundColor = .white
+            statusBarStyle = .darkContent
+            setUpMessageViewTextColor(with: .black)
+        }
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
     //MARK: Add Subviews
     private func addSubviews() {
         [topMessageHistoryView, dividerView, switchButtonView, bottomChatHistoryView].forEach {
@@ -59,7 +69,7 @@ class ViewController: UIViewController {
             view.addSubview($0)
         }
     }
-
+    
     // MARK: Layout constraint
     private func setUpLayoutConstraints() {
         [topMessageHistoryView, dividerView, bottomChatHistoryView, switchButtonView].forEach {
@@ -71,7 +81,7 @@ class ViewController: UIViewController {
         setUpdividerView()
         setUpswitchButtonView()
     }
-
+    
     private func setUpTopMessageHistoryView() {
         NSLayoutConstraint.activate([
             topMessageHistoryView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: TopMessageHistoryViewConstants.topAnchor),
@@ -80,7 +90,7 @@ class ViewController: UIViewController {
             topMessageHistoryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-
+    
     private func setUpTopbottomChatHistoryView() {
         NSLayoutConstraint.activate([
             bottomChatHistoryView.topAnchor.constraint(equalTo: dividerView.bottomAnchor),
@@ -89,7 +99,7 @@ class ViewController: UIViewController {
             bottomChatHistoryView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
-
+    
     private func setUpdividerView() {
         NSLayoutConstraint.activate([
             dividerView.topAnchor.constraint(equalTo: topMessageHistoryView.bottomAnchor),
@@ -99,7 +109,7 @@ class ViewController: UIViewController {
             dividerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-
+    
     private func setUpswitchButtonView() {
         NSLayoutConstraint.activate([
             switchButtonView.bottomAnchor.constraint(equalTo: topMessageHistoryView.topAnchor),
@@ -109,5 +119,7 @@ class ViewController: UIViewController {
         ])
     }
 }
+
+
 
 

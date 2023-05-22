@@ -10,7 +10,6 @@ import UIKit
 class MessageHistoryView: UIView {
 
     // MARK: Properties
-    private var data = Constants.dataArray
     private lazy var typingMessageView: TypingComponentView = {
         let typingMessageView = TypingComponentView()
         typingMessageView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +27,6 @@ class MessageHistoryView: UIView {
     }()
 
     // MARK: Init
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -48,7 +46,6 @@ class MessageHistoryView: UIView {
     }
 
     // MARK: Layout constraint
-
     private func setUpTableView(){
         addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -69,21 +66,25 @@ class MessageHistoryView: UIView {
     }
 }
 
-//MARK: Extension
-
+//MARK: UITableViewDataSource
 extension MessageHistoryView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        return 3
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        cell.configure(with: data[indexPath.row])
+        if indexPath.row == 0 {
+            cell.configure(with: "როგორ ხარ?", indexPath: indexPath)
+        } else if indexPath.row == 1 {
+            cell.configure(with: "კარგად, შენ?", indexPath: indexPath)
+        }else if indexPath.row == 2 {
+            cell.configure(with: "კარგად", indexPath: indexPath)
+        }
         return cell
     }
 }
-
 //MARK: Constants
 extension MessageHistoryView {
 
@@ -95,6 +96,5 @@ extension MessageHistoryView {
         static let tableViewTrailingPadding: CGFloat = -5
         static let typingMessageViewTopBottomTrailingLeading: CGFloat = 0
         static let placeHolderText = "დაწერე შეტყობინება ..."
-        static let dataArray = ["როგორ ხარ?", "კარგად","1234567"]
     }
 }
