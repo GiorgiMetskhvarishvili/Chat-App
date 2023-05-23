@@ -10,8 +10,6 @@ import UIKit
 class TypingComponentView: UIView {
 
     // MARK: - Properties
-    private var placeHolder = Constants.placeholderText
-    private var sendButtonImageName = Constants.sendButtonImageName
     private var heightConstraint: NSLayoutConstraint? = nil
 
     private lazy var containerView: UIView = {
@@ -25,7 +23,7 @@ class TypingComponentView: UIView {
 
     private lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.text = placeHolder
+        textView.text = Constants.placeholderText
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.textColor = .lightGray
@@ -37,7 +35,7 @@ class TypingComponentView: UIView {
 
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: sendButtonImageName), for: .normal)
+        button.setImage(UIImage(named: Constants.sendButtonImageName), for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -156,7 +154,7 @@ extension TypingComponentView: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = placeHolder
+            textView.text = Constants.placeholderText
             textView.textColor = .lightGray
         }
     }

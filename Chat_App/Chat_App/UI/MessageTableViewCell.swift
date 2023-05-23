@@ -59,7 +59,6 @@ final class MessageTableViewCell: UITableViewCell {
 
     func configure(with item: String, indexPath: IndexPath) {
          messageLabel.text = item
-
          if indexPath.row == 0 {
              setUpLeftBubbleLayoutConstraints()
          } else if indexPath.row == 1 {

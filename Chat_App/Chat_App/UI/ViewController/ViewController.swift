@@ -8,30 +8,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     // MARK: Properties
     private lazy var topMessageHistoryView = MessageHistoryView()
     private lazy var bottomChatHistoryView = MessageHistoryView()
     private lazy var switchButtonView = SwitchButtonView()
     private var statusBarStyle: UIStatusBarStyle = .darkContent
     private lazy var dividerView: UIView = {
-           let view = UIView()
-           view.backgroundColor = AppColors.dividerViewColor
-           return view
-       }()
-    
+        let view = UIView()
+        view.backgroundColor = AppColors.dividerViewColor
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         setUpLayoutConstraints()
         setUpSwitchButtonViewToggle()
+        setUpInitialAppearance()
     }
 
     // MARK: - PreferredStatusBarStyle
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
-    
+
+    // MARK: - SetUpInitialAppearance
+    private func setUpInitialAppearance() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "AppTheme")
+        updateAppearance(isDarkMode: isDarkMode)
+    }
+
     // MARK: - SetUpMessageViewTextColor
     private func setUpMessageViewTextColor(with color: UIColor) {
         topMessageHistoryView.setUpTypingComponentView(with: color)
@@ -40,9 +47,6 @@ class ViewController: UIViewController {
 
     // MARK: - SetUpSwitchButtonViewToggle
     private func setUpSwitchButtonViewToggle() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "AppTheme")
-        updateAppearance(isDarkMode: isDarkMode)
-
         switchButtonView.onToggle = { [weak self] isOn in
             UserDefaults.standard.set(isOn, forKey: "AppTheme")
             self?.updateAppearance(isDarkMode: isOn)
@@ -50,17 +54,12 @@ class ViewController: UIViewController {
     }
 
     private func updateAppearance(isDarkMode: Bool) {
-        if isDarkMode {
-            view.backgroundColor = AppColors.darkModeColor
-            statusBarStyle = .lightContent
-            setUpMessageViewTextColor(with: .white)
-        } else {
-            view.backgroundColor = .white
-            statusBarStyle = .darkContent
-            setUpMessageViewTextColor(with: .black)
-        }
+        view.backgroundColor = isDarkMode ? AppColors.darkModeColor : .white
+        statusBarStyle = isDarkMode ? .lightContent : .darkContent
+        setUpMessageViewTextColor(with: isDarkMode ? .white : .black)
         setNeedsStatusBarAppearanceUpdate()
     }
+
     
     //MARK: Add Subviews
     private func addSubviews() {
