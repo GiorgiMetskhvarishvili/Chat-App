@@ -159,6 +159,7 @@ extension TypingComponentView: UITextViewDelegate {
         }
     }
 }
+
 // MARK: ContainerViewConstants Extension
 private extension TypingComponentView {
     enum Constants {

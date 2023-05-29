@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         return view
     }()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()

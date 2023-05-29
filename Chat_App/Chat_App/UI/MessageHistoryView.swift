@@ -9,6 +9,13 @@ import UIKit
 
 class MessageHistoryView: UIView {
 
+    let dummyData: [Message] = [
+        Message(userID: .left, text: "როგორ ხარ?"),
+        Message(userID: .right, text: "კარგად შენ?"),
+        Message(userID: .left, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
+        Message(userID: .right, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
+    ]
+
     // MARK: Properties
     private lazy var typingMessageView: TypingComponentView = {
         let typingMessageView = TypingComponentView()
@@ -70,18 +77,19 @@ class MessageHistoryView: UIView {
 extension MessageHistoryView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        dummyData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        if indexPath.row == 0 {
-            cell.configure(with: "როგორ ხარ?", indexPath: indexPath)
-        } else if indexPath.row == 1 {
-            cell.configure(with: "კარგად, შენ?", indexPath: indexPath)
-        }else if indexPath.row == 2 {
-            cell.configure(with: "კარგად", indexPath: indexPath)
+        let message = dummyData[indexPath.row]
+        if message.userID == .left {
+            cell.setUpLeftBubbleLayoutConstraints()
+        } else {
+            cell.setUpRightBubbleLayoutConstraints()
+            cell.setUpSecondBubbleColor()
         }
+        cell.configure(with: message)
         return cell
     }
 }
@@ -98,3 +106,6 @@ extension MessageHistoryView {
         static let placeHolderText = "დაწერე შეტყობინება ..."
     }
 }
+
+
+
