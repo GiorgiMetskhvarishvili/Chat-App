@@ -11,6 +11,7 @@ class TypingComponentView: UIView {
 
     // MARK: - Properties
     private var heightConstraint: NSLayoutConstraint? = nil
+    private weak var messageHistoryView: MessageHistoryView?
 
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -42,12 +43,13 @@ class TypingComponentView: UIView {
     }()
 
     // MARK: - Initializers
-    init() {
-        super.init(frame: .zero)
-        updateTextViewHeight()
-        setUpSubviews()
-        setUpLayoutConstraints()
-    }
+    init(messageHistoryView: MessageHistoryView?) {
+           self.messageHistoryView = messageHistoryView // Assign the parameter to the property
+           super.init(frame: .zero)
+           updateTextViewHeight()
+           setUpSubviews()
+           setUpLayoutConstraints()
+       }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -132,8 +134,13 @@ class TypingComponentView: UIView {
             heightConstraint = nil
         }
     }
-
     @objc private func buttonTapped() {
+        //         guard let text = textView.text, !text.isEmpty else { return }
+        //
+        //         let message = Message(userID: .left, text: text)
+        //         let messageHistoryView = superview as? MessageHistoryView
+        //         messageHistoryView?.addMessage(message)
+        //
         textView.text = ""
     }
 }

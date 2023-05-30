@@ -9,20 +9,33 @@ import UIKit
 
 class MessageHistoryView: UIView {
 
-    let dummyData: [Message] = [
-        Message(userID: .left, text: "როგორ ხარ?"),
-        Message(userID: .right, text: "კარგად შენ?"),
-        Message(userID: .left, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
-        Message(userID: .right, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
+//    func addMessage(_ message: Message) {
+//          dummyData.append(message)
+//          tableView.reloadData()
+//          scrollToLastMessage()
+//      }
+//
+//      private func scrollToLastMessage() {
+//          let lastRowIndex = dummyData.count - 1
+//          if lastRowIndex >= 0 {
+//              let lastIndexPath = IndexPath(row: lastRowIndex, section: 0)
+//              tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+//          }
+//      }
+
+    var dummyData: [Message] = [
+        Message(userID: 1, text: "როგორ ხარ?"),
+        Message(userID: 2, text: "კარგად შენ?"),
+        Message(userID: 1, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
+        Message(userID: 2, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
     ]
 
     // MARK: Properties
     private lazy var typingMessageView: TypingComponentView = {
-        let typingMessageView = TypingComponentView()
+        let typingMessageView = TypingComponentView(messageHistoryView: self)
         typingMessageView.translatesAutoresizingMaskIntoConstraints = false
         return typingMessageView
     }()
-
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +85,6 @@ class MessageHistoryView: UIView {
         ])
     }
 }
-
 //MARK: UITableViewDataSource
 extension MessageHistoryView: UITableViewDataSource {
 
@@ -83,7 +95,7 @@ extension MessageHistoryView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
         let message = dummyData[indexPath.row]
-        if message.userID == .left {
+        if  message.userID == 1 {
             cell.setUpLeftBubbleLayoutConstraints()
         } else {
             cell.setUpRightBubbleLayoutConstraints()
@@ -105,6 +117,11 @@ extension MessageHistoryView {
         static let typingMessageViewTopBottomTrailingLeading: CGFloat = 0
         static let placeHolderText = "დაწერე შეტყობინება ..."
     }
+}
+private extension MessageHistoryView.Constants {
+    static let messageLeadingPadding: CGFloat = 16
+    static let messageTrailingPadding: CGFloat = -16
+    static let messageTopPadding: CGFloat = 8
 }
 
 

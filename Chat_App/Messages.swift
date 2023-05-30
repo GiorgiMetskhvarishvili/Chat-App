@@ -8,11 +8,6 @@
 import Foundation
 
 struct Message {
-    let userID: bubble
+    let userID: Int
     let text: String
-}
-
-enum bubble{
-    case right
-    case left
 }
