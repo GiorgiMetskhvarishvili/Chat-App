@@ -9,6 +9,6 @@ import UIKit
 
 //MARK: topMessageHistoryView Extension
 enum TopMessageHistoryViewConstants {
-  static let topAnchor: CGFloat = 15
-  static let bottomAnchor: CGFloat = -30
+    static let topAnchor: CGFloat = 15
+    static let bottomAnchor: CGFloat = -30
 }

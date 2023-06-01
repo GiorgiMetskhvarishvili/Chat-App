@@ -8,10 +8,10 @@
 import UIKit
 
 class SwitchButtonView: UIView {
-
+    
     // MARK: Components
     var onToggle: ((Bool) -> Void)?
-
+    
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
@@ -22,24 +22,24 @@ class SwitchButtonView: UIView {
         addSubview(button)
         return button
     }()
-
+    
     // MARK: LifeCycle
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonWidth),
             button.heightAnchor.constraint(equalToConstant: SwitchButtonViewConstants.switchButtonHeight)
         ])
     }
-
+    
     // MARK: Actions
     @objc func buttonTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
         updateBackgroundColor()
         onToggle?(sender.isSelected)
     }
-
+    
     // MARK: Methods
     private func updateBackgroundColor() {
         backgroundColor = button.isSelected ? AppColors.darkModeColor : .white

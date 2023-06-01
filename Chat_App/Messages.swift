@@ -11,3 +11,8 @@ struct Message {
     let userID: Int
     let text: String
 }
+
+enum Bubble {
+    case left
+    case right
+}

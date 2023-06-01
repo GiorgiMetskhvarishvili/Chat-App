@@ -44,12 +44,12 @@ class TypingComponentView: UIView {
 
     // MARK: - Initializers
     init(messageHistoryView: MessageHistoryView?) {
-           self.messageHistoryView = messageHistoryView // Assign the parameter to the property
-           super.init(frame: .zero)
-           updateTextViewHeight()
-           setUpSubviews()
-           setUpLayoutConstraints()
-       }
+        self.messageHistoryView = messageHistoryView
+        super.init(frame: .zero)
+        updateTextViewHeight()
+        setUpSubviews()
+        setUpLayoutConstraints()
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -65,9 +65,6 @@ class TypingComponentView: UIView {
     func setUpTextView(with color: UIColor) {
         textView.textColor = color
     }
-
-
-
 
     // MARK: - Layout Constraints
     private func setUpLayoutConstraints() {
@@ -135,12 +132,11 @@ class TypingComponentView: UIView {
         }
     }
     @objc private func buttonTapped() {
-        //         guard let text = textView.text, !text.isEmpty else { return }
-        //
-        //         let message = Message(userID: .left, text: text)
-        //         let messageHistoryView = superview as? MessageHistoryView
-        //         messageHistoryView?.addMessage(message)
-        //
+//        guard let text = textView.text, !text.isEmpty else { return }
+//
+//        let message = Message(userID: 1, text: text)
+//        let messageHistoryView = superview as? MessageHistoryView
+//        messageHistoryView?.addMessage(message)
         textView.text = ""
     }
 }

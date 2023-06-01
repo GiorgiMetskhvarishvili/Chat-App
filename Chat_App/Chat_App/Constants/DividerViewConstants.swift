@@ -9,6 +9,6 @@ import UIKit
 
 // MARK: DividerViewConstants Extension
 enum DividerViewConstants {
-  static let dividerHeightConstans: CGFloat = 6
+    static let dividerHeightConstans: CGFloat = 6
 }
 

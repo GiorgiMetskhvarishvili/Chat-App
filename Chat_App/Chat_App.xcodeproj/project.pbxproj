@@ -11,7 +11,6 @@
 		380CC0522A1B79C50092EEB0 /* DividerViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */; };
 		380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC0532A1B7A050092EEB0 /* AppColor.swift */; };
 		380CC05E2A24A9070092EEB0 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC05D2A24A9070092EEB0 /* Messages.swift */; };
-		380CC0602A25F4850092EEB0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380CC05F2A25F4850092EEB0 /* Message.swift */; };
 		385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018772A03E53900494D1A /* SwitchButtonView.swift */; };
 		3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187C2A03E55D00494D1A /* MessageHistoryView.swift */; };
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
@@ -31,7 +30,6 @@
 		380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViewConstants.swift; sourceTree = "<group>"; };
 		380CC0532A1B7A050092EEB0 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		380CC05D2A24A9070092EEB0 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
-		380CC05F2A25F4850092EEB0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		385018772A03E53900494D1A /* SwitchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonView.swift; sourceTree = "<group>"; };
 		3850187C2A03E55D00494D1A /* MessageHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryView.swift; sourceTree = "<group>"; };
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		389F2F8A29F663B900327D2B = {
 			isa = PBXGroup;
 			children = (
-				380CC05F2A25F4850092EEB0 /* Message.swift */,
 				380CC05D2A24A9070092EEB0 /* Messages.swift */,
 				389F2F9529F663BA00327D2B /* Chat_App */,
 				389F2F9429F663BA00327D2B /* Products */,
@@ -208,7 +205,6 @@
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
 				389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */,
 				38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */,
-				380CC0602A25F4850092EEB0 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

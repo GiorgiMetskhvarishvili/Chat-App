@@ -9,10 +9,10 @@ import UIKit
 
 // MARK: SwitchButtonViewConstants Extension
 enum SwitchButtonViewConstants {
-  static let switchButtonWidth: CGFloat = 54
-  static let switchButtonHeight: CGFloat = 27
-  static let switcherTopPadding: CGFloat = 0
-  static let trailingAnchor: CGFloat = -12
+    static let switchButtonWidth: CGFloat = 54
+    static let switchButtonHeight: CGFloat = 27
+    static let switcherTopPadding: CGFloat = 0
+    static let trailingAnchor: CGFloat = -12
 }
 
 enum SwitchButtonImages {

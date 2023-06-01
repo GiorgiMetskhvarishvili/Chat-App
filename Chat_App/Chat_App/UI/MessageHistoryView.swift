@@ -10,24 +10,24 @@ import UIKit
 class MessageHistoryView: UIView {
 
 //    func addMessage(_ message: Message) {
-//          dummyData.append(message)
-//          tableView.reloadData()
-//          scrollToLastMessage()
-//      }
+//        dummyData.append(message)
+//        tableView.reloadData()
+//        scrollToLastMessage()
+//    }
 //
-//      private func scrollToLastMessage() {
-//          let lastRowIndex = dummyData.count - 1
-//          if lastRowIndex >= 0 {
-//              let lastIndexPath = IndexPath(row: lastRowIndex, section: 0)
-//              tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
-//          }
-//      }
+//    private func scrollToLastMessage() {
+//        let lastRowIndex = dummyData.count - 1
+//        if lastRowIndex >= 0 {
+//            let lastIndexPath = IndexPath(row: lastRowIndex, section: 0)
+//            tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+//        }
+//    }
 
     var dummyData: [Message] = [
-        Message(userID: 1, text: "როგორ ხარ?"),
-        Message(userID: 2, text: "კარგად შენ?"),
-        Message(userID: 1, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
-        Message(userID: 2, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
+        Message(userID: 2, text: "როგორ ხარ?"),
+        Message(userID: 1, text: "კარგად შენ?"),
+        Message(userID: 2, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
+        Message(userID: 1, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
     ]
 
     // MARK: Properties
@@ -36,6 +36,7 @@ class MessageHistoryView: UIView {
         typingMessageView.translatesAutoresizingMaskIntoConstraints = false
         return typingMessageView
     }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,13 +96,9 @@ extension MessageHistoryView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
         let message = dummyData[indexPath.row]
-        if  message.userID == 1 {
-            cell.setUpLeftBubbleLayoutConstraints()
-        } else {
-            cell.setUpRightBubbleLayoutConstraints()
-            cell.setUpSecondBubbleColor()
-        }
-        cell.configure(with: message)
+
+        cell.configure(with: message, bubble: message.userID == 1 ? .left : .right)
+
         return cell
     }
 }
@@ -118,6 +115,7 @@ extension MessageHistoryView {
         static let placeHolderText = "დაწერე შეტყობინება ..."
     }
 }
+
 private extension MessageHistoryView.Constants {
     static let messageLeadingPadding: CGFloat = 16
     static let messageTrailingPadding: CGFloat = -16
