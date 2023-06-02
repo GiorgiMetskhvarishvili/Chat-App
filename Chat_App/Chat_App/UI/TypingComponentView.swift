@@ -113,7 +113,8 @@ class TypingComponentView: UIView {
     }
 
     private func updateTextViewHeight() {
-        if calculateMaxLines() > Constants.maxLineNubmer {
+        let valueOfMaxLine = calculateMaxLines() > Constants.maxLineNubmer
+        if valueOfMaxLine {
             if heightConstraint != nil { return }
             heightConstraint = containerView.heightAnchor.constraint(equalToConstant: containerView.frame.height)
             heightConstraint?.isActive = true
@@ -121,7 +122,7 @@ class TypingComponentView: UIView {
         } else {
             textView.isScrollEnabled = false
 
-            if let heightConstraint {
+            if let heightConstraint = heightConstraint {
                 heightConstraint.isActive = false
                 containerView.removeConstraint(heightConstraint)
                 containerView.layoutIfNeeded()
@@ -131,12 +132,9 @@ class TypingComponentView: UIView {
             heightConstraint = nil
         }
     }
+
     @objc private func buttonTapped() {
-//        guard let text = textView.text, !text.isEmpty else { return }
-//
-//        let message = Message(userID: 1, text: text)
-//        let messageHistoryView = superview as? MessageHistoryView
-//        messageHistoryView?.addMessage(message)
+        guard let text = textView.text, !text.isEmpty else { return }
         textView.text = ""
     }
 }

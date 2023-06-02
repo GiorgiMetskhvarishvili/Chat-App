@@ -1,5 +1,5 @@
 //
-//  Messages.swift
+//  Message.swift
 //  Chat_App
 //
 //  Created by Gi Oo on 29.05.23.

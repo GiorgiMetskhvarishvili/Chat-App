@@ -9,20 +9,6 @@ import UIKit
 
 class MessageHistoryView: UIView {
 
-//    func addMessage(_ message: Message) {
-//        dummyData.append(message)
-//        tableView.reloadData()
-//        scrollToLastMessage()
-//    }
-//
-//    private func scrollToLastMessage() {
-//        let lastRowIndex = dummyData.count - 1
-//        if lastRowIndex >= 0 {
-//            let lastIndexPath = IndexPath(row: lastRowIndex, section: 0)
-//            tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
-//        }
-//    }
-
     var dummyData: [Message] = [
         Message(userID: 2, text: "როგორ ხარ?"),
         Message(userID: 1, text: "კარგად შენ?"),
@@ -32,10 +18,10 @@ class MessageHistoryView: UIView {
 
     // MARK: Properties
     private lazy var typingMessageView: TypingComponentView = {
-        let typingMessageView = TypingComponentView(messageHistoryView: self)
-        typingMessageView.translatesAutoresizingMaskIntoConstraints = false
-        return typingMessageView
-    }()
+          let view = TypingComponentView(messageHistoryView: self)
+          view.translatesAutoresizingMaskIntoConstraints = false
+          return view
+      }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -97,7 +83,7 @@ extension MessageHistoryView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
         let message = dummyData[indexPath.row]
 
-        cell.configure(with: message, bubble: message.userID == 1 ? .left : .right)
+        cell.configure(with: message, bubble: message.userID == 2 ? .left : .right)
 
         return cell
     }

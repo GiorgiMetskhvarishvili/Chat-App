@@ -63,7 +63,6 @@ final class MessageTableViewCell: UITableViewCell {
         case .left:
             setUpLeftBubbleLayoutConstraints()
         case .right:
-           // removeLeftBubbleConstraints()
             setUpRightBubbleLayoutConstraints()
             setUpSecondBubbleColor()
         }
@@ -107,24 +106,13 @@ final class MessageTableViewCell: UITableViewCell {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    // MARK: - Layout Constraints
-//    func removeLeftBubbleConstraints() {
-//        NSLayoutConstraint.deactivate([
-//            smallBubble.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: SmallBubbleConstants.leadingAnchor),
-//            smallBubble.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: SmallBubbleConstants.bottomAnchor),
-//            middleBubble.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: MiddleBubbleConstants.leadingAnchor),
-//            middleBubble.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: MiddleBubbleConstants.bottomAnchor),
-//            chatBubble.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ChatBubbleConstants.topAnchor),
-//            chatBubble.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ChatBubbleConstants.leadingAnchor),
-//            messageLabel.topAnchor.constraint(equalTo: chatBubble.topAnchor, constant: MessageLabelConstants.topAnchor),
-//            messageLabel.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: MessageLabelConstants.leadingAnchor),
-//            messageLabel.trailingAnchor.constraint(equalTo: chatBubble.trailingAnchor, constant: MessageLabelConstants.trailingAnchor),
-//            messageLabel.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: MessageLabelConstants.bottomAnchor),
-//            dateLabel.topAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: DateLabelConstants.topAnchor),
-//            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DateLabelConstants.leadingAnchor),
-//            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: DateLabelConstants.bottomAnchor),
-//        ])
-//    }
+    func setUpLeftBubbleLayoutConstraints() {
+        setUpLeftSmallBubbleConstraints()
+        setUpLeftMiddleBubbleConstraints()
+        setUpLeftChatBubbleConstraints()
+        setUpLeftMessageLabelConstraints()
+        setUpLeftDateLabelConstraints()
+    }
 
     func setUpRightBubbleLayoutConstraints() {
         setUpRightSmallBubbleConstraints()
@@ -165,7 +153,7 @@ final class MessageTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: chatBubble.topAnchor, constant: messageLabelConstrains2.top),
             messageLabel.trailingAnchor.constraint(equalTo: chatBubble.trailingAnchor, constant: messageLabelConstrains2.trailing),
-            messageLabel.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: messageLabelConstrains2.bottom),
+           // messageLabel.bottomAnchor.constraint(equalTo: chatBubble.bottomAnchor, constant: messageLabelConstrains2.bottom),
             messageLabel.leadingAnchor.constraint(equalTo: chatBubble.leadingAnchor, constant: messageLabelConstrains2.leading)
         ])
     }
@@ -176,14 +164,6 @@ final class MessageTableViewCell: UITableViewCell {
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: dateLabelConstraints2.trailing),
             dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: dateLabelConstraints2.bottom),
         ])
-    }
-
-    func setUpLeftBubbleLayoutConstraints() {
-        setUpLeftSmallBubbleConstraints()
-        setUpLeftMiddleBubbleConstraints()
-        setUpLeftChatBubbleConstraints()
-        setUpLeftMessageLabelConstraints()
-        setUpLeftDateLabelConstraints()
     }
 
     private func setUpLeftSmallBubbleConstraints() {
