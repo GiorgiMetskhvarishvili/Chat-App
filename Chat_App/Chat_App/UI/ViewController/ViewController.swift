@@ -27,8 +27,20 @@ class ViewController: UIViewController {
         setUpLayoutConstraints()
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
+        addTapGestureRecognizer()
     }
-    
+
+    //MARK: - PreferredStatusBarStyle
+    private func addTapGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
     // MARK: - PreferredStatusBarStyle
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
@@ -57,7 +69,7 @@ class ViewController: UIViewController {
     private func updateAppearance(isDarkMode: Bool) {
         view.backgroundColor = isDarkMode ? AppColors.darkModeColor : .white
         statusBarStyle = isDarkMode ? .lightContent : .darkContent
-        setUpMessageViewTextColor(with: isDarkMode ? .white : .black)
+        setUpMessageViewTextColor(with: isDarkMode ? .white : .lightGray)
         setNeedsStatusBarAppearanceUpdate()
     }
     
