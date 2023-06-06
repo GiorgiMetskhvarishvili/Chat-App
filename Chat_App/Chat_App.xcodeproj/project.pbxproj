@@ -80,7 +80,6 @@
 		389F2F8A29F663B900327D2B = {
 			isa = PBXGroup;
 			children = (
-				380CC05D2A24A9070092EEB0 /* Message.swift */,
 				389F2F9529F663BA00327D2B /* Chat_App */,
 				389F2F9429F663BA00327D2B /* Products */,
 			);
@@ -99,6 +98,7 @@
 			children = (
 				389F2F9629F663BA00327D2B /* AppDelegate.swift */,
 				389F2F9829F663BA00327D2B /* SceneDelegate.swift */,
+				38DC3B752A2F499200192C0E /* Model */,
 				385018762A03E51500494D1A /* UI */,
 				38BE936E2A07CC8400B6ADC7 /* Constants */,
 				389F2F9C29F663BA00327D2B /* Main.storyboard */,
@@ -119,6 +119,14 @@
 				380CC0532A1B7A050092EEB0 /* AppColor.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		38DC3B752A2F499200192C0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				380CC05D2A24A9070092EEB0 /* Message.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
