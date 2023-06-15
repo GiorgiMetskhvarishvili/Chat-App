@@ -7,12 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, UITableViewDataSource{
+
     // MARK: Properties
     private lazy var topMessageHistoryView = MessageHistoryView()
     private lazy var bottomChatHistoryView = MessageHistoryView()
     private lazy var switchButtonView = SwitchButtonView()
+    private lazy var chatViewModel = ChatViewModel()
+    private lazy var currentDate = Date()
+    private lazy var formattedDate = DateFormatter.formatCustomDate(currentDate)
     private var statusBarStyle: UIStatusBarStyle = .darkContent
     private lazy var dividerView: UIView = {
         let view = UIView()
@@ -28,20 +31,30 @@ class ViewController: UIViewController {
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
         addTapGestureRecognizer()
+        //chatViewModel.removeMessages()
+        chatViewModel.loadMessages()
+        topMessageHistoryView.sendMessageDelegate = self
+        bottomChatHistoryView.sendMessageDelegate = self
+        chatViewModel.delegate = self
+        topMessageHistoryView.chatViewModel = chatViewModel
+        bottomChatHistoryView.chatViewModel = chatViewModel
+        topMessageHistoryView.example(erti: self, ori: self)
+        bottomChatHistoryView.example(erti: self, ori: self)
     }
 
-    //MARK: - PreferredStatusBarStyle
+    //MARK: - addTapGestureRecognizer
     private func addTapGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
 
+    //MARK: - dismissKeyboard
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
 
-    // MARK: - PreferredStatusBarStyle
+    //MARK: - PreferredStatusBarStyle
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
@@ -68,12 +81,12 @@ class ViewController: UIViewController {
     
     private func updateAppearance(isDarkMode: Bool) {
         view.backgroundColor = isDarkMode ? AppColors.darkModeColor : .white
+        switchButtonView.checkButtonState(isDarkMode: isDarkMode)
         statusBarStyle = isDarkMode ? .lightContent : .darkContent
-        setUpMessageViewTextColor(with: isDarkMode ? .white : .lightGray)
+        setUpMessageViewTextColor(with: isDarkMode ? .white : .black)
         setNeedsStatusBarAppearanceUpdate()
     }
-    
-    
+
     //MARK: Add Subviews
     private func addSubviews() {
         [topMessageHistoryView, dividerView, switchButtonView, bottomChatHistoryView].forEach {
@@ -132,6 +145,47 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: ChatViewModelDelegate {
+    func messagesLoaded() {
+        topMessageHistoryView.tableView.reloadData()
+        bottomChatHistoryView.tableView.reloadData()
+    }
+}
 
+extension ViewController: SendMessageDelegate {
+    func sendButton(with text: String, view: MessageHistoryView) {
+        if view === topMessageHistoryView {
+            chatViewModel.sendMessages(with: text, userID: 1, date: formattedDate)
+        } else if view === bottomChatHistoryView {
+            chatViewModel.sendMessages(with: text, userID: 2, date: formattedDate)
+        }
+    }
+}
 
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        chatViewModel.numberOfMessages()
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
+        let message = chatViewModel.message(at: indexPath.row)
+
+        var bubble: Bubble
+        if message.userID == 1 {
+            if tableView == topMessageHistoryView.tableView {
+                bubble = .right
+            } else {
+                bubble = .left
+            }
+        } else {
+            if tableView == topMessageHistoryView.tableView {
+                bubble = .left
+            } else {
+                bubble = .right
+            }
+        }
+        cell.configure(with: message, bubble: bubble)
+        return cell
+    }
+}

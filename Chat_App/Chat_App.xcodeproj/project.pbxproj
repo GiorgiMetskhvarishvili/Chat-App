@@ -15,11 +15,14 @@
 		3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187C2A03E55D00494D1A /* MessageHistoryView.swift */; };
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
 		385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018802A03E58500494D1A /* MessageTableViewCell.swift */; };
+		389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */; };
+		389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */; };
+		389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE52A386FC500FC0AA6 /* Date.swift */; };
 		389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9629F663BA00327D2B /* AppDelegate.swift */; };
 		389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9829F663BA00327D2B /* SceneDelegate.swift */; };
 		389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9A29F663BA00327D2B /* ViewController.swift */; };
 		389F2F9E29F663BA00327D2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2F9C29F663BA00327D2B /* Main.storyboard */; };
-		389F2FA129F663BA00327D2B /* Message.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9F29F663BA00327D2B /* Message.xcdatamodeld */; };
+		389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */; };
 		389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA229F663BA00327D2B /* Assets.xcassets */; };
 		389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */; };
 		38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */; };
@@ -34,6 +37,9 @@
 		3850187C2A03E55D00494D1A /* MessageHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryView.swift; sourceTree = "<group>"; };
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
 		385018802A03E58500494D1A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManeger.swift; sourceTree = "<group>"; };
+		389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryViewModel.swift; sourceTree = "<group>"; };
+		389ABAE52A386FC500FC0AA6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		389F2F9329F663BA00327D2B /* Chat_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F2F9629F663BA00327D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		389F2F9829F663BA00327D2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +111,7 @@
 				389F2FA229F663BA00327D2B /* Assets.xcassets */,
 				389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */,
 				389F2FA729F663BA00327D2B /* Info.plist */,
-				389F2F9F29F663BA00327D2B /* Message.xcdatamodeld */,
+				389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */,
 			);
 			path = Chat_App;
 			sourceTree = "<group>";
@@ -125,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				380CC05D2A24A9070092EEB0 /* Message.swift */,
+				389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */,
+				389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */,
+				389ABAE52A386FC500FC0AA6 /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,10 +212,13 @@
 				380CC0522A1B79C50092EEB0 /* DividerViewConstants.swift in Sources */,
 				3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */,
 				385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */,
+				389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */,
 				389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */,
-				389F2FA129F663BA00327D2B /* Message.xcdatamodeld in Sources */,
+				389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */,
+				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
 				380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */,
 				380CC05E2A24A9070092EEB0 /* Message.swift in Sources */,
+				389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
 				380CC0502A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift in Sources */,
@@ -434,13 +446,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		389F2F9F29F663BA00327D2B /* Message.xcdatamodeld */ = {
+		389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				389F2FA029F663BA00327D2B /* Chat_App.xcdatamodel */,
 			);
 			currentVersion = 389F2FA029F663BA00327D2B /* Chat_App.xcdatamodel */;
-			path = Message.xcdatamodeld;
+			path = Chat_App.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

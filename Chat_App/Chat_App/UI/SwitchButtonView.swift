@@ -44,6 +44,10 @@ class SwitchButtonView: UIView {
     private func updateBackgroundColor() {
         backgroundColor = button.isSelected ? AppColors.darkModeColor : .white
     }
+
+    func checkButtonState(isDarkMode: Bool) {
+        button.isSelected = isDarkMode
+    }
 }
 
 

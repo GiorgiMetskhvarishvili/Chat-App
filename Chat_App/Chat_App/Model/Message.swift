@@ -10,6 +10,7 @@ import Foundation
 struct Message {
     let userID: Int
     let text: String
+    let date: String
 }
 
 enum Bubble {

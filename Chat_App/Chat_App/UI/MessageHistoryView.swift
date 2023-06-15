@@ -7,26 +7,26 @@
 
 import UIKit
 
+protocol SendMessageDelegate: AnyObject {
+    func sendButton(with text: String, view: MessageHistoryView)
+}
+
 class MessageHistoryView: UIView {
 
-    var dummyData: [Message] = [
-        Message(userID: 2, text: "როგორ ხარ?"),
-        Message(userID: 1, text: "კარგად შენ?"),
-        Message(userID: 2, text: "კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად, კარგად,"),
-        Message(userID: 1, text: "dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, dsfs, ")
-    ]
+    weak var sendMessageDelegate: SendMessageDelegate?
+    var chatViewModel = ChatViewModel()
 
     // MARK: Properties
-    private lazy var typingMessageView: TypingComponentView = {
-          let view = TypingComponentView(messageHistoryView: self)
-          view.translatesAutoresizingMaskIntoConstraints = false
-          return view
-      }()
-    
-    private lazy var tableView: UITableView = {
+    lazy var typingMessageView: TypingComponentView = {
+        let view = TypingComponentView(messageHistoryView: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.buttonDelegate = self
+        return view
+    }()
+
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: MessageTableViewCell.reuseIdentifier)
@@ -47,7 +47,7 @@ class MessageHistoryView: UIView {
         typingMessageView.setUpTextView(with: color)
     }
 
-    private func setUp(){
+    private func setUp() {
         setUpTableView()
         setUpTypingComponentView()
     }
@@ -71,23 +71,19 @@ class MessageHistoryView: UIView {
             typingMessageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.typingMessageViewTopBottomTrailingLeading),
         ])
     }
-}
-//MARK: UITableViewDataSource
-extension MessageHistoryView: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyData.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        let message = dummyData[indexPath.row]
-
-        cell.configure(with: message, bubble: message.userID == 2 ? .left : .right)
-
-        return cell
+    func example(erti: UITableViewDataSource, ori: UITableViewDelegate) {
+        tableView.delegate = ori
+        tableView.dataSource = erti
     }
 }
+
+
+extension MessageHistoryView: buttonActionProcoloc {
+    func buttonTapped(with text: String) {
+        sendMessageDelegate?.sendButton(with: text, view: self)
+    }
+}
+
 //MARK: Constants
 extension MessageHistoryView {
 

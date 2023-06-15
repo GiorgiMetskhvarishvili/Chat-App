@@ -7,11 +7,35 @@
 
 import UIKit
 
+protocol TextInputComponentViewDelegate: AnyObject {
+    func didTapButton(text: String)
+}
+
+protocol UserMessageProtocol: AnyObject {
+    func userDidSendMessage(message: String)
+}
+
+protocol buttonActionProcoloc: AnyObject{
+    func buttonTapped(with text: String)
+}
+
 class TypingComponentView: UIView {
 
     // MARK: - Properties
     private var heightConstraint: NSLayoutConstraint? = nil
-    private weak var messageHistoryView: MessageHistoryView?
+    weak var messageHistoryView: MessageHistoryView?
+
+    weak var userMessageDelegate: UserMessageProtocol?
+    weak var buttonDelegate: buttonActionProcoloc?
+
+    private lazy var placeholderLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.placeholderText
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: Constants.textViewFontSize)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -22,12 +46,10 @@ class TypingComponentView: UIView {
         return view
     }()
 
-    private lazy var textView: UITextView = {
+     lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.text = Constants.placeholderText
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
-        textView.textColor = .lightGray
         textView.font = .systemFont(ofSize: Constants.textViewFontSize)
         textView.delegate = self
         textView.backgroundColor = UIColor.clear
@@ -37,7 +59,7 @@ class TypingComponentView: UIView {
     private lazy var button: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Constants.sendButtonImageName), for: .normal)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -60,6 +82,7 @@ class TypingComponentView: UIView {
         addSubview(containerView)
         containerView.addSubview(button)
         containerView.addSubview(textView)
+        textView.addSubview(placeholderLabel)
     }
 
     func setUpTextView(with color: UIColor) {
@@ -90,6 +113,13 @@ class TypingComponentView: UIView {
             textView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.textViewtopLeadingPadding),
             textView.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: Constants.textViewtrailingPadding)
         ])
+
+        NSLayoutConstraint.activate([
+                placeholderLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Constants.textViewtopLeadingPadding),
+                placeholderLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: Constants.textViewbottomPadding),
+                placeholderLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.textViewtopLeadingPadding),
+                placeholderLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: Constants.textViewtrailingPadding)
+            ])
     }
 
     private func setUpButtonLayoutConstraints() {
@@ -133,10 +163,12 @@ class TypingComponentView: UIView {
         }
     }
 
-    @objc private func buttonTapped() {
-        guard let text = textView.text, !text.isEmpty else { return }
+    @objc private func sendMessage() {
+        guard let text = textView.text else { return }
+        buttonDelegate?.buttonTapped(with: text)
         textView.text = ""
     }
+
 }
 
 // MARK: - UITextViewDelegate
@@ -144,19 +176,17 @@ extension TypingComponentView: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         self.updateTextViewHeight()
+        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
-            textView.text = ""
-            textView.textColor = .black
-        }
+        placeholderLabel.text = ""
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = Constants.placeholderText
-            textView.textColor = .lightGray
+            placeholderLabel.text = Constants.placeholderText
+            placeholderLabel.textColor = .lightGray
         }
     }
 }
