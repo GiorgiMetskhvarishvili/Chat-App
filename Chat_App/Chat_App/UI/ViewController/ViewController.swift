@@ -36,8 +36,6 @@ class ViewController: UIViewController, UITableViewDataSource{
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
         chatViewModel.delegate = self
-        topMessageHistoryView.chatViewModel = chatViewModel
-        bottomChatHistoryView.chatViewModel = chatViewModel
         topMessageHistoryView.example(erti: self, ori: self)
         bottomChatHistoryView.example(erti: self, ori: self)
     }
