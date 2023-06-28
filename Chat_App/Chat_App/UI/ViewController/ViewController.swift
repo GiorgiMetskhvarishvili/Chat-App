@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource{
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
         addTapGestureRecognizer()
-        //chatViewModel.removeMessages()
+        //viewControllerModel.removeMessages()
         viewControllerModel.loadMessages()
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
