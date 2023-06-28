@@ -152,22 +152,23 @@ extension ViewController: ChatViewModelDelegate {
 
 extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
-        if view === topMessageHistoryView {
-            viewControllerModel.sendMessages(with: text, userID: 1, date: formattedDate)
-        } else if view === bottomChatHistoryView {
-            viewControllerModel.sendMessages(with: text, userID: 2, date: formattedDate)
-        }
+
+        let userId = view == topMessageHistoryView ? 1 : 2
+        viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: true)
+
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewControllerModel.numberOfMessages()
+        viewControllerModel.numberOfMessages(userId: tableView == topMessageHistoryView.tableView ? 1 : 2)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        let message = viewControllerModel.message(at: indexPath.row)
+
+        let userId = tableView == topMessageHistoryView.tableView ? 1 : 2
+        let message = viewControllerModel.message(userId: userId, index: indexPath.row)
 
         var bubble: Bubble
         if message.userID == 1 {

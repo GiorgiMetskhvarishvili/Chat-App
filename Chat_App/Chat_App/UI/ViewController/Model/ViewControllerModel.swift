@@ -34,11 +34,12 @@ class ViewControllerModel {
     }
     
     //MARK: - Create new Message
-    func sendMessages(with text: String, userID: Int32, date: String) {
+    func sendMessages(with text: String, userID: Int32, date: String, isSent: Bool) {
         let newMessage = MessageEntity(context: coreDataManager.context)
         newMessage.userID = userID
         newMessage.text = text
         newMessage.date = date
+        newMessage.isSent = isSent
 
         sentMessages.append(newMessage)
         coreDataManager.saveItems()
@@ -46,12 +47,16 @@ class ViewControllerModel {
         print("Message sent")
     }
 
-    func numberOfMessages() -> Int {
-        return sentMessages.count
+    func numberOfMessages(userId: Int) -> Int {
+        return sentMessages.filter({sentMessage in filterMessage(message: sentMessage, userId: userId)}).count
     }
 
     //MARK: - Get a message at a specific index
-    func message(at index: Int) -> MessageEntity {
-        return sentMessages[index]
+    func message(userId: Int, index: Int) -> MessageEntity {
+        return sentMessages.filter({sentMessage in filterMessage(message: sentMessage, userId: userId)})[index]
+    }
+
+    private func filterMessage(message: MessageEntity, userId: Int) -> Bool {
+        return message.userID == userId || message.isSent
     }
 }
