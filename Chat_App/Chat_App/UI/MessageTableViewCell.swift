@@ -67,7 +67,15 @@ final class MessageTableViewCell: UITableViewCell {
 
     func configure(with message: MessageEntity, bubble: Bubble) {
         messageLabel.text = message.text
-        dateLabel.text = message.date
+
+        if message.isSent {
+            dateLabel.text = message.date
+            dateLabel.textColor = .lightGray
+        }else{
+            dateLabel.text = "aრ გაიგზავნა"
+            dateLabel.textColor = .red
+        }
+
         switch bubble {
         case .left:
             NSLayoutConstraint.deactivate(rightBubbleConstraints)

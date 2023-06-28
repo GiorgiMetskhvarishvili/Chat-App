@@ -26,6 +26,9 @@ class ViewController: UIViewController, UITableViewDataSource{
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NetworkManager.shared.startMonitoring()
+
         addSubviews()
         setUpLayoutConstraints()
         setUpSwitchButtonViewToggle()
@@ -154,8 +157,7 @@ extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
 
         let userId = view == topMessageHistoryView ? 1 : 2
-        viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: true)
-
+        viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
     }
 }
 

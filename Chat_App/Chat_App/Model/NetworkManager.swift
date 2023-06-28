@@ -10,29 +10,24 @@ import Network
 
 final class NetworkManager {
     static let shared = NetworkManager()
-    private let monitor = NWPathMonitor()
 
-    private(set) var isConnected: Bool = true {
-        didSet {
-            NotificationCenter.default.post(name: .networkConnectivityDidChange, object: nil)
-        }
-    }
+    private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
+    private let monitor: NWPathMonitor
+
+    private(set) var isConnected: Bool = false
 
     private init() {
-        startMonitoring()
+        monitor = NWPathMonitor()
     }
 
-    private func startMonitoring() {
+    func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
-            self?.isConnected = path.status == .satisfied
-            print(self?.isConnected ?? false)
+            self?.isConnected = path.status != .unsatisfied
         }
-
-        let queue = DispatchQueue(label: "NetworkMonitor")
         monitor.start(queue: queue)
     }
-}
 
-extension Notification.Name {
-    static let networkConnectivityDidChange = Notification.Name("networkConnectivityDidChange")
+    func stopMonitoring() {
+        monitor.cancel()
+    }
 }
