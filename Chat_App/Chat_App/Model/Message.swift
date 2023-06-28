@@ -11,6 +11,7 @@ struct Message {
     let userID: Int
     let text: String
     let date: String
+    let isSent: Bool
 }
 
 enum Bubble {
