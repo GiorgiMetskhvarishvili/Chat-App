@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource{
     private lazy var topMessageHistoryView = MessageHistoryView()
     private lazy var bottomChatHistoryView = MessageHistoryView()
     private lazy var switchButtonView = SwitchButtonView()
-    private lazy var chatViewModel = ChatViewModel()
+    private lazy var viewControllerModel = ViewControllerModel()
     private lazy var currentDate = Date()
     private lazy var formattedDate = DateFormatter.formatCustomDate(currentDate)
     private var statusBarStyle: UIStatusBarStyle = .darkContent
@@ -32,10 +32,10 @@ class ViewController: UIViewController, UITableViewDataSource{
         setUpInitialAppearance()
         addTapGestureRecognizer()
         //chatViewModel.removeMessages()
-        chatViewModel.loadMessages()
+        viewControllerModel.loadMessages()
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
-        chatViewModel.delegate = self
+        viewControllerModel.delegate = self
         topMessageHistoryView.example(erti: self, ori: self)
         bottomChatHistoryView.example(erti: self, ori: self)
     }
@@ -153,21 +153,21 @@ extension ViewController: ChatViewModelDelegate {
 extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
         if view === topMessageHistoryView {
-            chatViewModel.sendMessages(with: text, userID: 1, date: formattedDate)
+            viewControllerModel.sendMessages(with: text, userID: 1, date: formattedDate)
         } else if view === bottomChatHistoryView {
-            chatViewModel.sendMessages(with: text, userID: 2, date: formattedDate)
+            viewControllerModel.sendMessages(with: text, userID: 2, date: formattedDate)
         }
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        chatViewModel.numberOfMessages()
+        viewControllerModel.numberOfMessages()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        let message = chatViewModel.message(at: indexPath.row)
+        let message = viewControllerModel.message(at: indexPath.row)
 
         var bubble: Bubble
         if message.userID == 1 {

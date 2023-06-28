@@ -14,7 +14,6 @@ protocol SendMessageDelegate: AnyObject {
 class MessageHistoryView: UIView {
 
     weak var sendMessageDelegate: SendMessageDelegate?
-    var chatViewModel = ChatViewModel()
 
     // MARK: Properties
     lazy var typingMessageView: TypingComponentView = {

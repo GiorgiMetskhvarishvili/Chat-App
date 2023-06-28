@@ -16,7 +16,7 @@
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
 		385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018802A03E58500494D1A /* MessageTableViewCell.swift */; };
 		389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */; };
-		389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */; };
+		389ABAE22A3091B800FC0AA6 /* ViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* ViewControllerModel.swift */; };
 		389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE52A386FC500FC0AA6 /* Date.swift */; };
 		389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9629F663BA00327D2B /* AppDelegate.swift */; };
 		389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9829F663BA00327D2B /* SceneDelegate.swift */; };
@@ -39,7 +39,7 @@
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
 		385018802A03E58500494D1A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManeger.swift; sourceTree = "<group>"; };
-		389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryViewModel.swift; sourceTree = "<group>"; };
+		389ABAE12A3091B800FC0AA6 /* ViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModel.swift; sourceTree = "<group>"; };
 		389ABAE52A386FC500FC0AA6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		389F2F9329F663BA00327D2B /* Chat_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F2F9629F663BA00327D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +80,7 @@
 		385018882A03E65E00494D1A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				38D151C92A4C329300E13A30 /* Model */,
 				389F2F9A29F663BA00327D2B /* ViewController.swift */,
 			);
 			path = ViewController;
@@ -129,11 +130,18 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		38D151C92A4C329300E13A30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				389ABAE12A3091B800FC0AA6 /* ViewControllerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		38DC3B752A2F499200192C0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				380CC05D2A24A9070092EEB0 /* Message.swift */,
-				389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */,
 				389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */,
 				389ABAE52A386FC500FC0AA6 /* Date.swift */,
 				38D151C72A4C316700E13A30 /* NetworkManager.swift */,
@@ -221,7 +229,7 @@
 				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
 				380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */,
 				380CC05E2A24A9070092EEB0 /* Message.swift in Sources */,
-				389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */,
+				389ABAE22A3091B800FC0AA6 /* ViewControllerModel.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
 				38D151C82A4C316700E13A30 /* NetworkManager.swift in Sources */,
