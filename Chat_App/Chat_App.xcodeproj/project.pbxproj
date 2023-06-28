@@ -26,6 +26,7 @@
 		389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA229F663BA00327D2B /* Assets.xcassets */; };
 		389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */; };
 		38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */; };
+		38D151C82A4C316700E13A30 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D151C72A4C316700E13A30 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		389F2FA529F663BA00327D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		389F2FA729F663BA00327D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonConstants.swift; sourceTree = "<group>"; };
+		38D151C72A4C316700E13A30 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */,
 				389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */,
 				389ABAE52A386FC500FC0AA6 /* Date.swift */,
+				38D151C72A4C316700E13A30 /* NetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
+				38D151C82A4C316700E13A30 /* NetworkManager.swift in Sources */,
 				380CC0502A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift in Sources */,
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
 				389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */,
