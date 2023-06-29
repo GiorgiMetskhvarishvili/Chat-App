@@ -26,9 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource{
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         NetworkManager.shared.startMonitoring()
-
         addSubviews()
         setUpLayoutConstraints()
         setUpSwitchButtonViewToggle()
@@ -39,8 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource{
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
         viewControllerModel.delegate = self
-        topMessageHistoryView.example(erti: self, ori: self)
-        bottomChatHistoryView.example(erti: self, ori: self)
+        topMessageHistoryView.example(dataSource: self, delegate: self)
+        bottomChatHistoryView.example(dataSource: self, delegate: self)
     }
 
     //MARK: - addTapGestureRecognizer
@@ -155,11 +153,22 @@ extension ViewController: ChatViewModelDelegate {
 
 extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
+           let userId = view == topMessageHistoryView ? 1 : 2
+           viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
 
-        let userId = view == topMessageHistoryView ? 1 : 2
-        viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
-    }
-}
+           scrollToLastMessage(for: topMessageHistoryView)
+           scrollToLastMessage(for: bottomChatHistoryView)
+       }
+
+       private func scrollToLastMessage(for view: MessageHistoryView) {
+           let userId = view == topMessageHistoryView ? 1 : 2
+           let messageCount = viewControllerModel.numberOfMessages(userId: userId)
+           if messageCount > 0 {
+               let lastIndexPath = IndexPath(row: messageCount - 1, section: 0)
+               view.tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
+           }
+       }
+   }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
