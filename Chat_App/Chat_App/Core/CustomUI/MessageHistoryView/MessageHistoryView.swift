@@ -74,6 +74,7 @@ class MessageHistoryView: UIView {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
+
 }
 
 

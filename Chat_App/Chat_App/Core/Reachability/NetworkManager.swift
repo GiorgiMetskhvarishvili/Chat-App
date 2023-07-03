@@ -14,7 +14,7 @@ final class NetworkManager {
     private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
     private let monitor: NWPathMonitor
 
-    private(set) var isConnected: Bool = false
+    private(set) var isConnected: Bool = true
 
     private init() {
         monitor = NWPathMonitor()
