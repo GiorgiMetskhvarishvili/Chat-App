@@ -168,7 +168,6 @@ class TypingComponentView: UIView {
         buttonDelegate?.buttonTapped(with: text)
         textView.text = ""
     }
-
 }
 
 // MARK: - UITextViewDelegate

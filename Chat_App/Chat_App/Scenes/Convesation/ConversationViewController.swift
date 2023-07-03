@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource{
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
         addTapGestureRecognizer()
-        //viewControllerModel.removeMessages()
+        viewControllerModel.removeMessages()
         viewControllerModel.loadMessages()
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
@@ -155,7 +155,6 @@ extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
            let userId = view == topMessageHistoryView ? 1 : 2
            viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
-
            scrollToLastMessage(for: topMessageHistoryView)
            scrollToLastMessage(for: bottomChatHistoryView)
        }
