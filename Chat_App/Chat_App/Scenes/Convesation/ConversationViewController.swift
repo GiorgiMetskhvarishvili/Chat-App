@@ -37,8 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource{
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
         viewControllerModel.delegate = self
-        topMessageHistoryView.example(dataSource: self, delegate: self)
-        bottomChatHistoryView.example(dataSource: self, delegate: self)
+        topMessageHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
+        bottomChatHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
     }
 
     //MARK: - addTapGestureRecognizer

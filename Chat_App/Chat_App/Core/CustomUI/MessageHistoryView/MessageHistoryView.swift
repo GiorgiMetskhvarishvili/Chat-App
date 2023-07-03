@@ -70,7 +70,7 @@ class MessageHistoryView: UIView {
             typingMessageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.typingMessageViewTopBottomTrailingLeading),
         ])
     }
-    func example(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+    func dataSourceDelegate(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
