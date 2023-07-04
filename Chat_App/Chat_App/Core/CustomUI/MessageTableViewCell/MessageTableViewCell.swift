@@ -70,9 +70,9 @@ final class MessageTableViewCell: UITableViewCell {
 
         if message.isSent {
             dateLabel.text = message.date
-            dateLabel.textColor = .lightGray
+            dateLabel.textColor = dateLabelConstants.color
         }else{
-            dateLabel.text = "aრ გაიგზავნა"
+            dateLabel.text = dateLabelConstants.text
             dateLabel.textColor = .red
         }
 
@@ -179,6 +179,11 @@ final class MessageTableViewCell: UITableViewCell {
 
 // MARK: Constants
 private extension MessageTableViewCell {
+
+    enum dateLabelConstants {
+        static let text = "არ გაიგზავნა"
+        static let color: UIColor = .lightGray
+    }
 
     enum LeftChatBubbleConstants {
         static let topAnchor: CGFloat = 5

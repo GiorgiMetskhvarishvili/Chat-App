@@ -30,14 +30,34 @@ class ViewController: UIViewController, UITableViewDataSource{
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
         addTapGestureRecognizer()
+        setUpMessageViews()
+    }
+
+    private func setUpMessageViews() {
+        loadAndRemoveMessages()
+        configureSendMessageDelegates()
+        configureDataSourceDelegates()
+    }
+
+    //MARK: loadAndRemoveMessages()
+    private func loadAndRemoveMessages() {
         viewControllerModel.removeMessages()
         viewControllerModel.loadMessages()
+    }
+
+    //MARK: configureSendMessageDelegates()
+    private func configureSendMessageDelegates() {
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
-        viewControllerModel.delegate = self
+    }
+
+    //MARK: configureDataSourceDelegates()
+    private func configureDataSourceDelegates() {
         topMessageHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
         bottomChatHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
+        viewControllerModel.delegate = self
     }
+
 
     //MARK: - addTapGestureRecognizer
     private func addTapGestureRecognizer() {
