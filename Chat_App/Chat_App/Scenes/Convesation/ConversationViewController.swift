@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource{
         setUpMessageViews()
     }
 
+    //MARK: setUpMessageViews()
     private func setUpMessageViews() {
         loadAndRemoveMessages()
         configureSendMessageDelegates()
@@ -41,7 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource{
 
     //MARK: loadAndRemoveMessages()
     private func loadAndRemoveMessages() {
-        viewControllerModel.removeMessages()
+       // viewControllerModel.removeMessages()
         viewControllerModel.loadMessages()
     }
 
