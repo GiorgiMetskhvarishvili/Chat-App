@@ -10,14 +10,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource{
 
     // MARK: Properties
-    private lazy var topMessageHistoryView = MessageHistoryView()
-    private lazy var bottomChatHistoryView = MessageHistoryView()
-    private lazy var switchButtonView = SwitchButtonView()
-    private lazy var viewControllerModel = ViewControllerModel()
-    private lazy var currentDate = Date()
-    private lazy var formattedDate = DateFormatter.formatCustomDate(currentDate)
+    private var topMessageHistoryView = MessageHistoryView()
+    private var bottomChatHistoryView = MessageHistoryView()
+    private var switchButtonView = SwitchButtonView()
+    private var viewControllerModel = ViewControllerModel()
     private var statusBarStyle: UIStatusBarStyle = .darkContent
-    private lazy var dividerView: UIView = {
+    private var dividerView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.dividerViewColor
         return view
@@ -153,6 +151,8 @@ extension ViewController: ChatViewModelDelegate {
 
 extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
+           let currentDate = Date()
+           let formattedDate = DateFormatter.formatCustomDate(currentDate)
            let userId = view == topMessageHistoryView ? 1 : 2
            viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
            scrollToLastMessage(for: topMessageHistoryView)

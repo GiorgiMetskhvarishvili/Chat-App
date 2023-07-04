@@ -227,7 +227,6 @@ private extension MessageTableViewCell {
         static let leadingAnchor: CGFloat = 50
         static let bottomAnchor: CGFloat = -16
         static let fontSize: CGFloat = 12
-        static let labelText = "18:25"
         static let dateLabelFontSize = UIFont.systemFont(ofSize: 8)
     }
 
