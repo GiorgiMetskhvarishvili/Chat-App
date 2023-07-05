@@ -15,7 +15,7 @@
 		3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187C2A03E55D00494D1A /* MessageHistoryView.swift */; };
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
 		385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018802A03E58500494D1A /* MessageTableViewCell.swift */; };
-		389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */; };
+		389ABAE02A30915000FC0AA6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */; };
 		389ABAE22A3091B800FC0AA6 /* ConversationViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* ConversationViewControllerModel.swift */; };
 		389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE52A386FC500FC0AA6 /* Date.swift */; };
 		389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9629F663BA00327D2B /* AppDelegate.swift */; };
@@ -37,7 +37,7 @@
 		3850187C2A03E55D00494D1A /* MessageHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryView.swift; sourceTree = "<group>"; };
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
 		385018802A03E58500494D1A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManeger.swift; sourceTree = "<group>"; };
+		389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		389ABAE12A3091B800FC0AA6 /* ConversationViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewControllerModel.swift; sourceTree = "<group>"; };
 		389ABAE52A386FC500FC0AA6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		389F2F9329F663BA00327D2B /* Chat_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +163,7 @@
 		38D151DB2A4DB73200E13A30 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */,
+				389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */,
 				389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -317,7 +317,7 @@
 				385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */,
 				389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */,
 				389F2F9B29F663BA00327D2B /* ConversationViewController.swift in Sources */,
-				389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */,
+				389ABAE02A30915000FC0AA6 /* CoreDataManager.swift in Sources */,
 				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
 				380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */,
 				380CC05E2A24A9070092EEB0 /* Message.swift in Sources */,
