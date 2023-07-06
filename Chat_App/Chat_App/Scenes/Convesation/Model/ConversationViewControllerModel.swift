@@ -12,7 +12,7 @@ protocol ChatViewModelDelegate: AnyObject {
     func messagesLoaded()
 }
 
-class ViewControllerModel {
+class ConversationViewModel {
     weak var delegate: ChatViewModelDelegate?
     private let coreDataManager = CoreDataManager()
     private var sentMessages = [MessageEntity]()

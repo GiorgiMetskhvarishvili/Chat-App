@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource{
     private var topMessageHistoryView = MessageHistoryView()
     private var bottomChatHistoryView = MessageHistoryView()
     private var switchButtonView = SwitchButtonView()
-    private var viewControllerModel = ViewControllerModel()
+    private var viewControllerModel = ConversationViewModel()
     private var statusBarStyle: UIStatusBarStyle = .darkContent
     private var dividerView: UIView = {
         let view = UIView()
@@ -176,17 +176,6 @@ extension ViewController: SendMessageDelegate {
            let formattedDate = DateFormatter.formatCustomDate(currentDate)
            let userId = view == topMessageHistoryView ? 1 : 2
            viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
-           scrollToLastMessage(for: topMessageHistoryView)
-           scrollToLastMessage(for: bottomChatHistoryView)
-       }
-
-       private func scrollToLastMessage(for view: MessageHistoryView) {
-           let userId = view == topMessageHistoryView ? 1 : 2
-           let messageCount = viewControllerModel.numberOfMessages(userId: userId)
-           if messageCount > 0 {
-               let lastIndexPath = IndexPath(row: messageCount - 1, section: 0)
-               view.tableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
-           }
        }
    }
 
