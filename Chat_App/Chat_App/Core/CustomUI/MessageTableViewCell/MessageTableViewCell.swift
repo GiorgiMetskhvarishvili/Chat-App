@@ -67,7 +67,15 @@ final class MessageTableViewCell: UITableViewCell {
 
     func configure(with message: MessageEntity, bubble: Bubble) {
         messageLabel.text = message.text
-        dateLabel.text = message.date
+
+        if message.isSent {
+            dateLabel.text = message.date
+            dateLabel.textColor = dateLabelConstants.color
+        }else{
+            dateLabel.text = dateLabelConstants.text
+            dateLabel.textColor = .red
+        }
+
         switch bubble {
         case .left:
             NSLayoutConstraint.deactivate(rightBubbleConstraints)
@@ -172,6 +180,11 @@ final class MessageTableViewCell: UITableViewCell {
 // MARK: Constants
 private extension MessageTableViewCell {
 
+    enum dateLabelConstants {
+        static let text = "არ გაიგზავნა"
+        static let color: UIColor = .lightGray
+    }
+
     enum LeftChatBubbleConstants {
         static let topAnchor: CGFloat = 5
         static let leadingAnchor: CGFloat = 30
@@ -219,7 +232,6 @@ private extension MessageTableViewCell {
         static let leadingAnchor: CGFloat = 50
         static let bottomAnchor: CGFloat = -16
         static let fontSize: CGFloat = 12
-        static let labelText = "18:25"
         static let dateLabelFontSize = UIFont.systemFont(ofSize: 8)
     }
 

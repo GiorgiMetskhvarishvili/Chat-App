@@ -10,14 +10,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource{
 
     // MARK: Properties
-    private lazy var topMessageHistoryView = MessageHistoryView()
-    private lazy var bottomChatHistoryView = MessageHistoryView()
-    private lazy var switchButtonView = SwitchButtonView()
-    private lazy var chatViewModel = ChatViewModel()
-    private lazy var currentDate = Date()
-    private lazy var formattedDate = DateFormatter.formatCustomDate(currentDate)
+    private var topMessageHistoryView = MessageHistoryView()
+    private var bottomChatHistoryView = MessageHistoryView()
+    private var switchButtonView = SwitchButtonView()
+    private var viewControllerModel = ConversationViewModel()
     private var statusBarStyle: UIStatusBarStyle = .darkContent
-    private lazy var dividerView: UIView = {
+    private var dividerView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.dividerViewColor
         return view
@@ -26,21 +24,41 @@ class ViewController: UIViewController, UITableViewDataSource{
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkManager.shared.startMonitoring()
         addSubviews()
         setUpLayoutConstraints()
         setUpSwitchButtonViewToggle()
         setUpInitialAppearance()
         addTapGestureRecognizer()
-        //chatViewModel.removeMessages()
-        chatViewModel.loadMessages()
+        setUpMessageViews()
+    }
+
+    //MARK: setUpMessageViews()
+    private func setUpMessageViews() {
+        loadAndRemoveMessages()
+        configureSendMessageDelegates()
+        configureDataSourceDelegates()
+    }
+
+    //MARK: loadAndRemoveMessages()
+    private func loadAndRemoveMessages() {
+       // viewControllerModel.removeMessages()
+        viewControllerModel.loadMessages()
+    }
+
+    //MARK: configureSendMessageDelegates()
+    private func configureSendMessageDelegates() {
         topMessageHistoryView.sendMessageDelegate = self
         bottomChatHistoryView.sendMessageDelegate = self
-        chatViewModel.delegate = self
-        topMessageHistoryView.chatViewModel = chatViewModel
-        bottomChatHistoryView.chatViewModel = chatViewModel
-        topMessageHistoryView.example(erti: self, ori: self)
-        bottomChatHistoryView.example(erti: self, ori: self)
     }
+
+    //MARK: configureDataSourceDelegates()
+    private func configureDataSourceDelegates() {
+        topMessageHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
+        bottomChatHistoryView.dataSourceDelegate(dataSource: self, delegate: self)
+        viewControllerModel.delegate = self
+    }
+
 
     //MARK: - addTapGestureRecognizer
     private func addTapGestureRecognizer() {
@@ -154,22 +172,23 @@ extension ViewController: ChatViewModelDelegate {
 
 extension ViewController: SendMessageDelegate {
     func sendButton(with text: String, view: MessageHistoryView) {
-        if view === topMessageHistoryView {
-            chatViewModel.sendMessages(with: text, userID: 1, date: formattedDate)
-        } else if view === bottomChatHistoryView {
-            chatViewModel.sendMessages(with: text, userID: 2, date: formattedDate)
-        }
-    }
-}
+           let currentDate = Date()
+           let formattedDate = DateFormatter.formatCustomDate(currentDate)
+           let userId = view == topMessageHistoryView ? 1 : 2
+           viewControllerModel.sendMessages(with: text, userID: Int32(userId), date: formattedDate, isSent: NetworkManager.shared.isConnected)
+       }
+   }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        chatViewModel.numberOfMessages()
+        viewControllerModel.numberOfMessages(userId: tableView == topMessageHistoryView.tableView ? 1 : 2)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseIdentifier, for: indexPath) as! MessageTableViewCell
-        let message = chatViewModel.message(at: indexPath.row)
+
+        let userId = tableView == topMessageHistoryView.tableView ? 1 : 2
+        let message = viewControllerModel.message(userId: userId, index: indexPath.row)
 
         var bubble: Bubble
         if message.userID == 1 {

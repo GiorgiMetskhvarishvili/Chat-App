@@ -15,17 +15,17 @@
 		3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187C2A03E55D00494D1A /* MessageHistoryView.swift */; };
 		3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850187E2A03E57200494D1A /* TypingComponentView.swift */; };
 		385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385018802A03E58500494D1A /* MessageTableViewCell.swift */; };
-		389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */; };
-		389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */; };
+		389ABAE02A30915000FC0AA6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */; };
+		389ABAE22A3091B800FC0AA6 /* ConversationViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE12A3091B800FC0AA6 /* ConversationViewControllerModel.swift */; };
 		389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABAE52A386FC500FC0AA6 /* Date.swift */; };
 		389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9629F663BA00327D2B /* AppDelegate.swift */; };
 		389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9829F663BA00327D2B /* SceneDelegate.swift */; };
-		389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9A29F663BA00327D2B /* ViewController.swift */; };
-		389F2F9E29F663BA00327D2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2F9C29F663BA00327D2B /* Main.storyboard */; };
+		389F2F9B29F663BA00327D2B /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9A29F663BA00327D2B /* ConversationViewController.swift */; };
 		389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */; };
 		389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA229F663BA00327D2B /* Assets.xcassets */; };
 		389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */; };
 		38BE93702A07CCB100B6ADC7 /* SwitchButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */; };
+		38D151C82A4C316700E13A30 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D151C72A4C316700E13A30 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,19 +37,19 @@
 		3850187C2A03E55D00494D1A /* MessageHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryView.swift; sourceTree = "<group>"; };
 		3850187E2A03E57200494D1A /* TypingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingComponentView.swift; sourceTree = "<group>"; };
 		385018802A03E58500494D1A /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManeger.swift; sourceTree = "<group>"; };
-		389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHistoryViewModel.swift; sourceTree = "<group>"; };
+		389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		389ABAE12A3091B800FC0AA6 /* ConversationViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewControllerModel.swift; sourceTree = "<group>"; };
 		389ABAE52A386FC500FC0AA6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		389F2F9329F663BA00327D2B /* Chat_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F2F9629F663BA00327D2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		389F2F9829F663BA00327D2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		389F2F9A29F663BA00327D2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		389F2F9D29F663BA00327D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		389F2F9A29F663BA00327D2B /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		389F2FA029F663BA00327D2B /* Chat_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat_App.xcdatamodel; sourceTree = "<group>"; };
 		389F2FA229F663BA00327D2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		389F2FA529F663BA00327D2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		389F2FA729F663BA00327D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonConstants.swift; sourceTree = "<group>"; };
+		38D151C72A4C316700E13A30 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,24 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		385018762A03E51500494D1A /* UI */ = {
+		385018882A03E65E00494D1A /* Convesation */ = {
 			isa = PBXGroup;
 			children = (
-				385018772A03E53900494D1A /* SwitchButtonView.swift */,
-				3850187C2A03E55D00494D1A /* MessageHistoryView.swift */,
-				3850187E2A03E57200494D1A /* TypingComponentView.swift */,
-				385018802A03E58500494D1A /* MessageTableViewCell.swift */,
-				385018882A03E65E00494D1A /* ViewController */,
+				389F2F9A29F663BA00327D2B /* ConversationViewController.swift */,
+				38D151C92A4C329300E13A30 /* Model */,
 			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		385018882A03E65E00494D1A /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				389F2F9A29F663BA00327D2B /* ViewController.swift */,
-			);
-			path = ViewController;
+			path = Convesation;
 			sourceTree = "<group>";
 		};
 		389F2F8A29F663B900327D2B = {
@@ -102,40 +91,155 @@
 		389F2F9529F663BA00327D2B /* Chat_App */ = {
 			isa = PBXGroup;
 			children = (
-				389F2F9629F663BA00327D2B /* AppDelegate.swift */,
-				389F2F9829F663BA00327D2B /* SceneDelegate.swift */,
-				38DC3B752A2F499200192C0E /* Model */,
-				385018762A03E51500494D1A /* UI */,
-				38BE936E2A07CC8400B6ADC7 /* Constants */,
-				389F2F9C29F663BA00327D2B /* Main.storyboard */,
-				389F2FA229F663BA00327D2B /* Assets.xcassets */,
-				389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */,
-				389F2FA729F663BA00327D2B /* Info.plist */,
-				389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */,
+				38D151D62A4DB6D600E13A30 /* App */,
+				38D151D72A4DB71400E13A30 /* Core */,
+				38D151E12A4DB85000E13A30 /* Scenes */,
+				38D151E32A4DB8D300E13A30 /* Resources */,
+				38D151E42A4DB8F200E13A30 /* Supporting Files */,
 			);
 			path = Chat_App;
 			sourceTree = "<group>";
 		};
-		38BE936E2A07CC8400B6ADC7 /* Constants */ = {
+		38D151C92A4C329300E13A30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */,
+				389ABAE12A3091B800FC0AA6 /* ConversationViewControllerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		38D151D62A4DB6D600E13A30 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				389F2F9629F663BA00327D2B /* AppDelegate.swift */,
+				389F2F9829F663BA00327D2B /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		38D151D72A4DB71400E13A30 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				38D151D82A4DB71B00E13A30 /* CustomUI */,
+				38D151D92A4DB72100E13A30 /* Extensions */,
+				38D151DA2A4DB72B00E13A30 /* Models */,
+				38D151DB2A4DB73200E13A30 /* CoreData */,
+				38D151DC2A4DB73700E13A30 /* Reachability */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		38D151D82A4DB71B00E13A30 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				38D151DD2A4DB75300E13A30 /* SwitchButtonView */,
+				38D151DE2A4DB76000E13A30 /* MessageHistoryView */,
+				38D151DF2A4DB76B00E13A30 /* TypingComponentView */,
+				38D151E02A4DB77A00E13A30 /* MessageTableViewCell */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		38D151D92A4DB72100E13A30 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				389ABAE52A386FC500FC0AA6 /* Date.swift */,
 				380CC04F2A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift */,
+				38BE936F2A07CCB100B6ADC7 /* SwitchButtonConstants.swift */,
 				380CC0512A1B79C50092EEB0 /* DividerViewConstants.swift */,
 				380CC0532A1B7A050092EEB0 /* AppColor.swift */,
 			);
-			path = Constants;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		38DC3B752A2F499200192C0E /* Model */ = {
+		38D151DA2A4DB72B00E13A30 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				380CC05D2A24A9070092EEB0 /* Message.swift */,
-				389ABAE12A3091B800FC0AA6 /* MessageHistoryViewModel.swift */,
-				389ABADF2A30915000FC0AA6 /* CoreDataManeger.swift */,
-				389ABAE52A386FC500FC0AA6 /* Date.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		38D151DB2A4DB73200E13A30 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				389ABADF2A30915000FC0AA6 /* CoreDataManager.swift */,
+				389F2F9F29F663BA00327D2B /* Chat_App.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		38D151DC2A4DB73700E13A30 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				38D151C72A4C316700E13A30 /* NetworkManager.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		38D151DD2A4DB75300E13A30 /* SwitchButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				385018772A03E53900494D1A /* SwitchButtonView.swift */,
+			);
+			path = SwitchButtonView;
+			sourceTree = "<group>";
+		};
+		38D151DE2A4DB76000E13A30 /* MessageHistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				3850187C2A03E55D00494D1A /* MessageHistoryView.swift */,
+			);
+			path = MessageHistoryView;
+			sourceTree = "<group>";
+		};
+		38D151DF2A4DB76B00E13A30 /* TypingComponentView */ = {
+			isa = PBXGroup;
+			children = (
+				3850187E2A03E57200494D1A /* TypingComponentView.swift */,
+			);
+			path = TypingComponentView;
+			sourceTree = "<group>";
+		};
+		38D151E02A4DB77A00E13A30 /* MessageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				385018802A03E58500494D1A /* MessageTableViewCell.swift */,
+			);
+			path = MessageTableViewCell;
+			sourceTree = "<group>";
+		};
+		38D151E12A4DB85000E13A30 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				385018882A03E65E00494D1A /* Convesation */,
+				38D151E22A4DB86300E13A30 /* Launch */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		38D151E22A4DB86300E13A30 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		38D151E32A4DB8D300E13A30 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				389F2FA229F663BA00327D2B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		38D151E42A4DB8F200E13A30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				389F2FA729F663BA00327D2B /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,7 +302,6 @@
 			files = (
 				389F2FA629F663BA00327D2B /* LaunchScreen.storyboard in Resources */,
 				389F2FA329F663BA00327D2B /* Assets.xcassets in Resources */,
-				389F2F9E29F663BA00327D2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,14 +316,15 @@
 				3850187D2A03E55D00494D1A /* MessageHistoryView.swift in Sources */,
 				385018812A03E58500494D1A /* MessageTableViewCell.swift in Sources */,
 				389ABAE62A386FC500FC0AA6 /* Date.swift in Sources */,
-				389F2F9B29F663BA00327D2B /* ViewController.swift in Sources */,
-				389ABAE02A30915000FC0AA6 /* CoreDataManeger.swift in Sources */,
+				389F2F9B29F663BA00327D2B /* ConversationViewController.swift in Sources */,
+				389ABAE02A30915000FC0AA6 /* CoreDataManager.swift in Sources */,
 				389F2FA129F663BA00327D2B /* Chat_App.xcdatamodeld in Sources */,
 				380CC0542A1B7A050092EEB0 /* AppColor.swift in Sources */,
 				380CC05E2A24A9070092EEB0 /* Message.swift in Sources */,
-				389ABAE22A3091B800FC0AA6 /* MessageHistoryViewModel.swift in Sources */,
+				389ABAE22A3091B800FC0AA6 /* ConversationViewControllerModel.swift in Sources */,
 				385018782A03E53900494D1A /* SwitchButtonView.swift in Sources */,
 				3850187F2A03E57200494D1A /* TypingComponentView.swift in Sources */,
+				38D151C82A4C316700E13A30 /* NetworkManager.swift in Sources */,
 				380CC0502A1B79870092EEB0 /* TopMessageHistoryViewConstants.swift in Sources */,
 				389F2F9729F663BA00327D2B /* AppDelegate.swift in Sources */,
 				389F2F9929F663BA00327D2B /* SceneDelegate.swift in Sources */,
@@ -231,14 +335,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		389F2F9C29F663BA00327D2B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				389F2F9D29F663BA00327D2B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		389F2FA429F663BA00327D2B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -373,10 +469,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SXQ4D9HGW2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Chat_App/Info.plist;
+				INFOPLIST_FILE = "Chat_App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -402,10 +497,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SXQ4D9HGW2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Chat_App/Info.plist;
+				INFOPLIST_FILE = "Chat_App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

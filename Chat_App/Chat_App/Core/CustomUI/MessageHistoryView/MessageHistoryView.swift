@@ -14,7 +14,6 @@ protocol SendMessageDelegate: AnyObject {
 class MessageHistoryView: UIView {
 
     weak var sendMessageDelegate: SendMessageDelegate?
-    var chatViewModel = ChatViewModel()
 
     // MARK: Properties
     lazy var typingMessageView: TypingComponentView = {
@@ -52,6 +51,14 @@ class MessageHistoryView: UIView {
         setUpTypingComponentView()
     }
 
+    private func scrollToLastMessage(){
+        tableView.reloadData()
+        let lastSection = tableView.numberOfSections - 1
+        let lastRow = tableView.numberOfRows(inSection: lastSection) - 1
+        let lastRowIndexPath = IndexPath(row: lastRow, section: lastSection)
+        tableView.scrollToRow(at: lastRowIndexPath, at: .bottom, animated: true)
+    }
+
     // MARK: Layout constraint
     private func setUpTableView(){
         addSubview(tableView)
@@ -71,9 +78,9 @@ class MessageHistoryView: UIView {
             typingMessageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.typingMessageViewTopBottomTrailingLeading),
         ])
     }
-    func example(erti: UITableViewDataSource, ori: UITableViewDelegate) {
-        tableView.delegate = ori
-        tableView.dataSource = erti
+    func dataSourceDelegate(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
     }
 }
 
@@ -81,6 +88,7 @@ class MessageHistoryView: UIView {
 extension MessageHistoryView: buttonActionProcoloc {
     func buttonTapped(with text: String) {
         sendMessageDelegate?.sendButton(with: text, view: self)
+        scrollToLastMessage()
     }
 }
 
